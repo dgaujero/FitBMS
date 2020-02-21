@@ -1,44 +1,63 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import CheckIn from "./pages/checkIn";
+// import Manage from './pages/manage';
+import MemberPortal from './pages/memberPortal';
 
-class App extends Component {
-state = {
-    data: null
-  };
-
-  componentDidMount() {
-      // Call our fetch function below once the component mounts
-    this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
-      .catch(err => console.log(err));
-  }
-    // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-  callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
-    const body = await response.json();
-
-    if (response.status !== 200) {
-      throw Error(body.message) 
-    }
-    return body;
-  };
-
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        // Render the newly fetched data inside of this.state.data 
-        <p className="App-intro">{this.state.data}</p>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <Router>
+      <Route path="/checkin" component={CheckIn} />
+      <Route path="/memberportal" component={MemberPortal} />
+      {/* <Route path="/manage" component={Manage} /> */}
+    </Router>
+  );
 }
 
 export default App;
+
+
+// import React, { Component } from 'react';
+// import logo from './logo.svg';
+// import './App.css';
+
+// class App extends Component {
+// state = {
+//     data: null
+//   };
+
+//   componentDidMount() {
+//       // Call our fetch function below once the component mounts
+//     this.callBackendAPI()
+//       .then(res => this.setState({ data: res.express }))
+//       .catch(err => console.log(err));
+//   }
+//     // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
+//   callBackendAPI = async () => {
+//     const response = await fetch('/express_backend');
+//     const body = await response.json();
+
+//     if (response.status !== 200) {
+//       throw Error(body.message) 
+//     }
+//     return body;
+//   };
+
+//   render() {
+//     return (
+//       <div className="App">
+//         <header className="App-header">
+//           <img src={logo} className="App-logo" alt="logo" />
+//           <h1 className="App-title">Welcome to React</h1>
+//         </header>
+//         // Render the newly fetched data inside of this.state.data 
+//         <p className="App-intro">{this.state.data}</p>
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
 
 // import React from 'react';
 // import logo from './logo.svg';
