@@ -15,7 +15,7 @@ function MemberPage(){
             <IconButton edge="start" color="inherit" aria-label="menu">
             </IconButton>
             <Typography variant="h6">
-            News
+            FitnessBMS
             </Typography>
             <Button color="inherit">Login</Button>
             </Toolbar>
