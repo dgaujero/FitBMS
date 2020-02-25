@@ -1,22 +1,48 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import fire from "../../config/fire";
 import CheckIn from "./pages/checkIn";
 import Manage from './pages/manage';
 import MemberPortal from './pages/memberPortal';
 import MemberPage from "./pages/memberPage";
 import SelectPage from "./pages/selectPage";
 
-function App() {
-  return (
-    <Router>
+class App extends React.Component {
+
+  state = {
+    user : {}
+  }
+
+  componentDidMount(){
+    this.authListener();
+  }
+  
+  authListener(){
+      fire.auth().onAuthStateChanged((user) => {
+          if(user){
+            this.setState({user});
+          }
+          else{
+            this.setState({user: null});
+          }
+      });
+  }
+  
+  
+  render() {
+    <div className="App">
+        {this.state.user ? (<MemberPage/>) : (<MemberPortal/>)}
+    </div>
+  };
+}
+
+{/* <Router>
       <Route path="/" component={SelectPage}/>
       <Route path="/checkin" component={CheckIn} />
       <Route path="/memberportal" component={MemberPortal} />
       <Route path="/manage" component={Manage} />
       <Route path="/member" component={MemberPage}/>
-    </Router>
-  );
-}
+</Router> */}
 
 export default App;
 

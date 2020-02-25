@@ -7,8 +7,10 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 
 
-function MemberPage(){
-    return (
+class MemberPage extends React.Component{
+    
+    
+    render() {
     <div>
         <AppBar position="static">
             <Toolbar>
@@ -17,16 +19,20 @@ function MemberPage(){
             <Typography variant="h6">
             FitnessBMS
             </Typography>
-            <Button color="inherit">Login</Button>
             </Toolbar>
         </AppBar>
+        
+        HELLO 
+
+
         <Router>
             <div className = "memberPageDiv">
                 
             </div>
         </Router>
     </div>
-    )
-}
+    
+    }
 
+}
 export default MemberPage;
