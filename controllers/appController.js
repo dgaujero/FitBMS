@@ -15,4 +15,17 @@ router.get("/getmembers", function(req,res) {
     });
 });
 
+router.post("/checkin/session", function (req, res) {
+    // var classID = req.params.id;
+    console.log(req.body);
+    manage.addToSessions(
+        [ "name" ], 
+        [ req.body.name ],
+        function (result) {
+            res.json({ id: result.insertId });
+        }
+    );
+});
+
+
 module.exports = router;

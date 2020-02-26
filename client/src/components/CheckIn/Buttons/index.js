@@ -3,7 +3,6 @@ import { Button, ButtonGroup } from 'reactstrap';
 
 const MemTrainBTN = (props) => {
   const [cSelected, setCSelected] = useState([]);
-  const [rSelected, setRSelected] = useState(null);
 
   const onCheckboxBtnClick = (selected) => {
     const index = cSelected.indexOf(selected);
@@ -16,11 +15,11 @@ const MemTrainBTN = (props) => {
   }
   return (
     <div>
-      <ButtonGroup>
+      {/* <ButtonGroup>
         <Button color="primary" onClick={() => setRSelected(1)} active={rSelected === 1}>Member</Button>
         <Button color="primary" onClick={() => setRSelected(2)} active={rSelected === 2}>Trainer</Button>
       </ButtonGroup>
-      <p>Selected: {rSelected}</p>
+      <p>Selected: {rSelected}</p> */}
 
       <h5>Checkbox Buttons</h5>
       <ButtonGroup>
