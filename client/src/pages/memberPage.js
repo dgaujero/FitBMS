@@ -4,34 +4,56 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button'
+import {Button} from 'reactstrap';
+import fire from "../config/fire";
 
 
 class MemberPage extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+           email: ''
+        }
+    }
+
+    componentDidMount(){
+        const user = fire.auth().currentUser;
+        if(user != null){
+            this.setState({email: user.email});
+        }
+    }
     
+    logout = () => {
+        fire.auth().signOut();
+        this.setState({user: {}});
+    }
     
     render() {
-    <div>
-        <AppBar position="static">
-            <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu">
-            </IconButton>
-            <Typography variant="h6">
-            FitnessBMS
-            </Typography>
-            </Toolbar>
-        </AppBar>
         
-        HELLO 
+        return(
+        <div>
+            <AppBar position="static">
+                <Toolbar>
+                <IconButton edge="start" color="inherit" aria-label="menu">
+                </IconButton>
+                <Typography variant="h6">
+                FitnessBMS
+                </Typography>
+                </Toolbar>
+            </AppBar>
+            
+            <h1>Hello</h1> {this.state.email}
+            <br/>
+            <Button onClick={this.logout}>Sign Out</Button>
 
 
-        <Router>
-            <div className = "memberPageDiv">
-                
-            </div>
-        </Router>
-    </div>
-    
+            <Router>
+                <div className = "memberPageDiv">
+                    
+                </div>
+            </Router>
+        </div>
+    )
     }
 
 }

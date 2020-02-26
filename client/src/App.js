@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import fire from "../../config/fire";
-import CheckIn from "./pages/checkIn";
-import Manage from './pages/manage';
+//import { BrowserRouter as Router, Route } from "react-router-dom";
+import fire from "./config/fire";
+//import CheckIn from "./pages/checkIn";
+//import Manage from './pages/manage';
 import MemberPortal from './pages/memberPortal';
 import MemberPage from "./pages/memberPage";
-import SelectPage from "./pages/selectPage";
+//import SelectPage from "./pages/selectPage";
 
 class App extends React.Component {
 
@@ -30,9 +30,18 @@ class App extends React.Component {
   
   
   render() {
+    if(this.state.user){
+      return(
+        <div className="App">
+            <MemberPage/>
+        </div>
+        )
+    }
+    return(
     <div className="App">
-        {this.state.user ? (<MemberPage/>) : (<MemberPortal/>)}
+        <MemberPortal/>}
     </div>
+    )
   };
 }
 
