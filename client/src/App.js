@@ -1,57 +1,31 @@
 import React from "react";
-//import { BrowserRouter as Router, Route } from "react-router-dom";
-import fire from "./config/fire";
-//import CheckIn from "./pages/checkIn";
-//import Manage from './pages/manage';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+// import fire from "./config/fire";
+import CheckIn from "./pages/checkIn";
+import Manage from './pages/manage';
 import MemberPortal from './pages/memberPortal';
-import MemberPage from "./pages/memberPage";
-//import SelectPage from "./pages/selectPage";
+import MemberPage from "./components/memberPage";
+// import SelectPage from "./pages/selectPage";
 
 class App extends React.Component {
 
-  state = {
-    user : {}
-  }
-
-  componentDidMount(){
-    this.authListener();
-  }
-  
-  authListener(){
-      fire.auth().onAuthStateChanged((user) => {
-          if(user){
-            this.setState({user});
-          }
-          else{
-            this.setState({user: null});
-          }
-      });
-  }
-  
-  
   render() {
-    if(this.state.user){
-      return(
-        <div className="App">
-            <MemberPage/>
-        </div>
-        )
-    }
-    return(
-    <div className="App">
-        <MemberPortal/>}
-    </div>
+
+    return (
+      <div className="App">
+        <Router>
+          {/* <Route path="/" component={SelectPage} /> */}
+          <Route path="/checkin" component={CheckIn} />
+          <Route path="/memberportal" component={MemberPortal} />
+          <Route path="/manage" component={Manage} />
+          <Route path="/member" component={MemberPage} />
+        </Router>
+      </div>
     )
   };
 }
 
-{/* <Router>
-      <Route path="/" component={SelectPage}/>
-      <Route path="/checkin" component={CheckIn} />
-      <Route path="/memberportal" component={MemberPortal} />
-      <Route path="/manage" component={Manage} />
-      <Route path="/member" component={MemberPage}/>
-</Router> */}
+
 
 export default App;
 
