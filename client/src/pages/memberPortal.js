@@ -22,6 +22,7 @@ class MemberPortal extends React.Component {
       fire.auth().onAuthStateChanged((user) => {
           if(user){
             this.setState({user});
+            console.log(user);
           }
           else{
             this.setState({user: null});
