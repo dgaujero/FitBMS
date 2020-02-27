@@ -17,10 +17,19 @@ class MemberPage extends React.Component{
     }
 
     componentDidMount(){
-        const user = fire.auth().currentUser;
-        if(user != null){
+        this.authListener();
+    }
+      
+    authListener(){
+        fire.auth().onAuthStateChanged((user) => {
+            if(user){
             this.setState({email: user.email});
-        }
+            console.log(user);
+            }
+            else{
+            this.setState({user: null});
+            }
+        });
     }
     
     logout = () => {
