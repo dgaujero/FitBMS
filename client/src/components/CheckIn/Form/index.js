@@ -12,7 +12,8 @@ class CheckinForm extends React.Component {
     super(props);
     this.state = {
       members: [],
-      name: ""
+      name: "",
+      purpose: ""
     }
 
   };
@@ -38,28 +39,39 @@ class CheckinForm extends React.Component {
     ))
   }
 
-  selectMember(e, memberName) {
+  selectMember(e, memberName, purpose) {
     this.setState({
-      name: memberName
+      name: memberName,
+      purpose: purpose
     })
   };
+  
+  // selectPurpose(e, purpose) {
+  //   this.setState({
+  //     purpose: purpose
+  //   })
+  // };
 
   handleInputChange = (event, data) => {
     // e.preventDefault();
-    this.setState({ name: event.target.value });
+    this.setState({ 
+      name: event.target.value,
+      purpose: event.target.value
+     });
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-
+    console.log(event);
     const signIn = {
-      name: this.state.name
+      name: this.state.name,
+      purpose: this.state.purpose
     };
     console.log("session post data", signIn);
 
     axios.post(`checkin/session`, signIn)
       .then(res => {
-        console.log("checkin sessino res", res);
+        console.log("checkin session res", res);
       })
   }
 
@@ -77,6 +89,7 @@ class CheckinForm extends React.Component {
                         {member.firstName} {member.lastName}
                       </strong>
                       <button type="button" onClick={e => this.selectMember(e, member.firstName)}>Thats me!??</button>
+                      {/* <button type="button" onClick={e => this.selectMember()}>Trainer</button> */}
                     </ListItem>
                   );
                 })}
