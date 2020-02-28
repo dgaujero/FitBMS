@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import CheckInForm from '../components/CheckIn/Form'
+import Video from '../components/Video/Video'
 
-class CheckIn extends Component{
+class CheckIn extends Component {
     render() {
-        return(
+        return (
             <div>
+                <Video></Video>
                 <CheckInForm></CheckInForm>
             </div>
         )
