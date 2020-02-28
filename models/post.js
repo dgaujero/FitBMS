@@ -1,7 +1,7 @@
 var orm = require("../config/orm");
 var admin = {
-    all: function(cb) {
-        orm.all("checkInTable", function(res) {
+    allAttedance: function(cb) {
+        orm.allAttendance("checkInTable", function(res) {
             cb(res);
         });
     },
@@ -20,6 +20,12 @@ var admin = {
         orm.addToSessions("checkInTable", cols, vals, function(res) {
             cb(res);
     });
-    }
+    },
+    // deleteMember: function(condition, cb) {
+    //     console.log("delete member");
+    //     orm.deleteMember("membersTable", condition, function(res){
+    //         cb(res);
+    //     });
+    // }
 };
 module.exports = admin;
