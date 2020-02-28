@@ -98,7 +98,7 @@ class CheckinForm extends React.Component {
                       <strong>
                         {member.firstName} {member.lastName}
                       </strong>
-                      <button type="button" onClick={this.select("name")} value={member.firstName}>Thats me!??</button>
+                      <button type="button" onClick={this.select("name")} value={member.firstName + " " + member.lastName}>Thats me!</button>
                       <button type="button" onClick={this.select("purpose")} value="Trainer">Trainer</button>
                       <button type="button" onClick={this.select("purpose")} value="Class">Class</button>
                     </ListItem>
