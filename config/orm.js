@@ -36,6 +36,22 @@ var orm = {
           cb(result);
         });
       },
+
+      viewMember: function(table, condition, cb) {
+        console.log("ORM");
+        var queryString = "SELECT * FROM " + table;
+        queryString += " WHERE ";
+        queryString += condition;
+        console.log(queryString);
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+
+          cb(result);
+        });
+      },
+
       allMembers: function(tableInput, cb) { //members
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function(err, result) {

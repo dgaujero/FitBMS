@@ -2,6 +2,7 @@ var express = require("express");
 var path = require("path");
 var router = express.Router();
 var manage = require("../models/post");
+var member = require("../models/memberPortal")
 const connection = require("../config/connection")
 
 router.get("/attendance", function(req, res){
@@ -25,6 +26,14 @@ router.post("/checkin/session", function (req, res) {
             res.json({ id: result.insertId });
         }
     );
+});
+
+router.get("/viewmember/id/:id", function(req,res) {
+    console.log(req.params.id);
+    var condition = "uId = '" + req.params.id +"'";
+    member.viewMember(condition,function(data) {
+        res.json({ member: data })
+    });
 });
 
 
