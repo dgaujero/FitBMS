@@ -5,6 +5,11 @@ var admin = {
             cb(res);
         });
     },
+    viewMember: function(condition, cb) {
+        orm.viewMember("membersTable", condition, function(rses) {
+            cb(res);
+        });
+    },
     allMembers: function(cb) {
         orm.allMembers("membersTable", function(res) {
             cb(res);
