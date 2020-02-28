@@ -39,18 +39,28 @@ class CheckinForm extends React.Component {
     ))
   }
 
-  selectMember(e, memberName, purpose) {
-    this.setState({
-      name: memberName,
-      purpose: purpose
-    })
-  };
+  // selectMember(e, memberName) {
+  //   this.setState({
+  //     name: memberName
+  //   })
+  // };
   
   // selectPurpose(e, purpose) {
   //   this.setState({
   //     purpose: purpose
   //   })
   // };
+
+  /*
+    
+  */
+  select = (field) => {
+    return (e) => {
+      this.setState({
+        [field]: e.target.value
+      })
+    }
+  }
 
   handleInputChange = (event, data) => {
     // e.preventDefault();
@@ -88,8 +98,9 @@ class CheckinForm extends React.Component {
                       <strong>
                         {member.firstName} {member.lastName}
                       </strong>
-                      <button type="button" onClick={e => this.selectMember(e, member.firstName)}>Thats me!??</button>
-                      {/* <button type="button" onClick={e => this.selectMember()}>Trainer</button> */}
+                      <button type="button" onClick={this.select("name")} value={member.firstName}>Thats me!??</button>
+                      <button type="button" onClick={this.select("purpose")} value="Trainer">Trainer</button>
+                      <button type="button" onClick={this.select("purpose")} value="Class">Class</button>
                     </ListItem>
                   );
                 })}
