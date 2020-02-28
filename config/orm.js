@@ -79,6 +79,7 @@ var orm = {
         });
       },
 
+
       updateMember: function(table, objColVals, condition, cb) {
         console.log("UPDATE STEP 3");
         var queryString = "UPDATE " + table;
@@ -93,9 +94,33 @@ var orm = {
           if (err) {
             throw err;
           }
-    
           cb(result);
         });
       },
+
+      allAttendance : function(tableInput, cb) { //class attendance
+        var queryString = "SELECT * FROM " + tableInput + ";";
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+          cb(result);
+        });
+      },
+      // 
+      // delete function for management side 
+      // 
+      // deleteMember: function(table, condition, cb) {// delete members
+      //   var deleteString = "DELETE FROM " + table;
+      //   deleteString += " WHERE ";
+      //   deleteString += condition;
+      //   console.log(deleteString);
+      //   connection.query(deleteString, function(err, result) {
+      //     if (err) {
+      //       throw err;
+      //     }
+      //     cb(result);
+      //   });
+      // }
     }
     module.exports = orm;

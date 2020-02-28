@@ -5,11 +5,11 @@ var manage = require("../models/post");
 var member = require("../models/memberPortal")
 const connection = require("../config/connection")
 
-router.get("/attendance", function(req, res){
-    manage.all(function(data) {
-    res.json({ checkedIn: data });
-});
-});
+// router.get("/attendance", function(req, res){
+//     manage.all(function(data) {
+//     res.json({ checkedIn: data });
+// });
+// });
 router.get("/getmembers", function(req,res) {
     manage.allMembers(function(data) {
         res.json({ members: data })
@@ -20,7 +20,7 @@ router.post("/checkin/session", function (req, res) {
     // var classID = req.params.id;
     console.log(req.body);
     manage.addToSessions(
-        [ "name" ], 
+        [ "name"], 
         [ req.body.name ],
         function (result) {
             res.json({ id: result.insertId });
@@ -35,6 +35,7 @@ router.get("/viewmember/id/:id", function(req,res) {
         res.json({ member: data })
     });
 });
+
 
 router.put("/updatemember/", function(req, res) {
     var condition = "uId = '" + req.body.profileUpdate.uId +"'";
@@ -54,6 +55,25 @@ router.put("/updatemember/", function(req, res) {
       }
     });
   });
+
+
+router.get("/manage/attendance", function(req, res){
+    manage.allAttedance(function(data) {
+    res.json({ checkedIn: data });
+});
+});
+
+// router.deleteMember("/manage/members/id/:id", function(req, res) {
+//     var condition = "id = " + req.params.id;
+//     console.log(req.params.id);
+//     manage.deleteMember(condition, function(result) {
+//         if (result.affectedRows == 0) {
+//             return res.status(404).end();
+//         } else {
+//             res.status(200).end();
+//         }
+//     });
+// });
 
 
 module.exports = router;

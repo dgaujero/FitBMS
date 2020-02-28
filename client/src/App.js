@@ -18,7 +18,7 @@ class App extends React.Component {
           <Route path="/memberportal" component={MemberPortal} />
           <Route path="/manage" component={Manage} />
           <Route path="/member" component={MemberPage} />
-    
+
         </Router>
       </div>
     )
