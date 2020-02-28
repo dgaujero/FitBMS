@@ -6,6 +6,14 @@ var member = {
         orm.viewMember("membersTable", condition, function(res) {
             cb(res);
         });
+    },
+
+    updateMember: function(colVals, condition, cb) {
+        console.log("UpdateSTEP2");
+        console.log(colVals);
+        orm.updateMember("membersTable", colVals, condition, function(res) {
+            cb(res);
+        });
     }
     
 };
