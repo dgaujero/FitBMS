@@ -61,6 +61,7 @@ var orm = {
           cb(result);
         });
       },
+
       addToSessions: function(table, cols, vals, cb) { 
         var queryString = "INSERT INTO " + table;
         queryString += " (";
@@ -74,6 +75,25 @@ var orm = {
           if (err) {
             throw err;
           }
+          cb(result);
+        });
+      },
+
+      updateMember: function(table, objColVals, condition, cb) {
+        console.log("UPDATE STEP 3");
+        var queryString = "UPDATE " + table;
+    
+        queryString += " SET ";
+        queryString += objToSql(objColVals);
+        queryString += " WHERE ";
+        queryString += condition;
+        
+        console.log(queryString);
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+    
           cb(result);
         });
       },

@@ -36,5 +36,24 @@ router.get("/viewmember/id/:id", function(req,res) {
     });
 });
 
+router.put("/updatemember/", function(req, res) {
+    var condition = "uId = '" + req.body.profileUpdate.uId +"'";
+    console.log("UpdateSTEP1");
+    member.updateMember({
+      firstName: req.body.profileUpdate.firstName,
+      lastName: req.body.profileUpdate.lastName,
+      bday: req.body.profileUpdate.bday,
+      phoneNum: req.body.profileUpdate.phoneNum,
+      address: req.body.profileUpdate.address,
+    }, condition, function(result) {
+      if (result.changedRows == 0) {
+        // If no rows were changed, then the ID must not exist, so 404
+        return res.status(404).end();
+      } else {
+        res.json({ id: req.params.id });
+      }
+    });
+  });
+
 
 module.exports = router;
