@@ -79,7 +79,7 @@ class CheckinForm extends React.Component {
     };
     console.log("session post data", signIn);
 
-    axios.post(`checkin/session`, signIn)
+    axios.post(`/signin`, signIn)
       .then(res => {
         console.log("checkin session res", res);
       })
