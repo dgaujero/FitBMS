@@ -159,6 +159,15 @@ var orm = {
       }
       cb(result);
     });
+  },
+  allTrainers: function(tableInput, cb) { //trainers
+    var queryString = "SELECT * FROM " + tableInput + " WHERE isTrainer = '1';";
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
   }
 }
 module.exports = orm;

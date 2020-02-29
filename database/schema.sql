@@ -27,6 +27,7 @@ CREATE TABLE membersTable
     emergName varchar(255) NOT NULL,
     emergNum int NOT NULL,
     uId varchar(100) NOT NULL,
+    isTrainer boolean default '0',
 	PRIMARY KEY (id)
 );
 CREATE TABLE classesTable

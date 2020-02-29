@@ -109,4 +109,10 @@ router.post("/classes/add", function(req, res){
   });
 });
 
+router.get("/trainers", function(req, res){
+  manage.allTrainers(function(data) {
+  res.json({ trainers: data });
+});
+});
+
 module.exports = router;

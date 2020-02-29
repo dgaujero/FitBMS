@@ -1,4 +1,4 @@
-INSERT INTO membersTable (firstName, lastName, username, password, phoneNum, bday, address, email, emergName, emergNum,uId) 
+INSERT INTO membersTable (firstName, lastName, username, password, phoneNum, bday, address, email, emergName, emergNum,uId, isTrainer) 
 VALUES (
     'Deion',
     'Aujero',
@@ -10,10 +10,11 @@ VALUES (
     'deion@aujero.net',
     'mom',
     '1111111112',
-    'sdasasdasfsdgdfgdfg'
+    'sdasasdasfsdgdfgdfg',
+    '1'
     );
 
-INSERT INTO membersTable (firstName, lastName, username, password, phoneNum, bday, address, email, emergName, emergNum,uId) 
+INSERT INTO membersTable (firstName, lastName, username, password, phoneNum, bday, address, email, emergName, emergNum,uId, isTrainer) 
 VALUES (
     'Amiel',
     'Nicdao',
@@ -25,7 +26,8 @@ VALUES (
     'amiel@gmail.com',
     'mom',
     '1111111112',
-    'sdasdsadasdasdas'
+    'sdasdsadasdasdas',
+    '1'
     );
 
 INSERT INTO membersTable (firstName, lastName, username, password, phoneNum, bday, address, email, emergName, emergNum, uId) 
