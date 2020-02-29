@@ -62,18 +62,51 @@ router.get("/manage/attendance", function(req, res){
     res.json({ checkedIn: data });
 });
 });
+// MANAGEMENT SIDE
 
-// router.deleteMember("/manage/members/id/:id", function(req, res) {
-//     var condition = "id = " + req.params.id;
-//     console.log(req.params.id);
-//     manage.deleteMember(condition, function(result) {
-//         if (result.affectedRows == 0) {
-//             return res.status(404).end();
-//         } else {
-//             res.status(200).end();
-//         }
-//     });
-// });
+router.delete("/manage/members/id/:id", function(req, res) {
+    var condition = "id = " + req.params.id;
+    console.log(req.params.id);
+    manage.deleteMember(condition, function(result) {
+        if (result.affectedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
+});
 
+router.get("/classes", function(req, res){
+  manage.allClasses(function(data) {
+  res.json({ classes: data });
+});
+});
+
+router.put("/classes/id/:id", function(req, res) { //class update
+  var condition = "id = " + req.params.id;
+  console.log("controller update");
+  manage.update({
+      nameOfClass: req.body.nameOfClass
+  }, condition, function(result) {
+      if (result.changedRows == 0) {
+          return res.status(404).end();
+      } else {
+          res.json({id: req.params.id});
+      }
+  });
+});
+
+router.post("/classes/add", function(req, res){
+  // var classID = req.params.id;
+  console.log(req.body);
+  console.log("new class controller")
+  manage.createNewClass([
+      "nameOfClass", "classType", "assignedTrainer", "classSize"
+  ], [
+      req.body.addClass.nameOfClass, req.body.addClass.classType, req.body.addClass.assignedTrainer, req.body.addClass.classSize
+  ], function(result) {
+      res.json({ id: result.insertId});
+  });
+});
 
 module.exports = router;
