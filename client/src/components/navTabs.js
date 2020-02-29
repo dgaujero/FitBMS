@@ -35,7 +35,7 @@ function Navbar() {
       <li className="nav-item">
         <Link
           to="/scheduler"
-          className={window.location.pathname === "/scheduler" ? "nav-link active" : "nav-link"}
+          className={window.location.pathname === "/manage/classes" ? "nav-link active" : "nav-link"}
         >
           Scheduler
         </Link>

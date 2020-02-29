@@ -27,7 +27,7 @@ class Members extends Component {
  
   deleteMember = (e,data) => {
     e.preventDefault();
-    axios.deleteMember(`/manage/members/id/${data}`)
+    axios.delete(`/manage/members/id/${data}`)
       .then(res => this.loadMembers())
       .catch(err => console.log(err));
   };
