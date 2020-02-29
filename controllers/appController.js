@@ -16,12 +16,12 @@ router.get("/getmembers", function(req,res) {
     });
 });
 
-router.post("/checkin/session", function (req, res) {
+router.post("/signin", function (req, res) {
     // var classID = req.params.id;
     console.log(req.body);
     manage.addToSessions(
-        [ "name"], 
-        [ req.body.name ],
+        [ "name", "purpose"], 
+        [ req.body.name, req.body.purpose],
         function (result) {
             res.json({ id: result.insertId });
         }
