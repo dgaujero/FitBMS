@@ -8,7 +8,7 @@ CREATE TABLE checkInTable
 	id int NOT NULL AUTO_INCREMENT,
 	name varchar(255) NOT NULL,
     purpose varchar(255) NOT NULL,
-    datatime timestamp ,
+    seshTime timestamp default CURRENT_TIMESTAMP,
     uId varchar(100) NOT NULL,
 	PRIMARY KEY (id)
 );
@@ -20,12 +20,12 @@ CREATE TABLE membersTable
     lastName varchar(255) NOT NULL,
 	username varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
-    phoneNum int(255) NOT NULL,
+    phoneNum int NOT NULL,
     bday date NOT NULL,
     address varchar(255) NOT NULL,
     email  varchar(255) NOT NULL,
     emergName varchar(255) NOT NULL,
-    emergNum int(255) NOT NULL,
+    emergNum int NOT NULL,
     uId varchar(100) NOT NULL,
 	PRIMARY KEY (id)
 );
@@ -36,5 +36,5 @@ CREATE TABLE classesTable
 	className varchar(255) NOT NULL,
     classType varchar(255) NOT NULL,
 	assignedTrainer varchar(255) NOT NULL,
-    classSize int(50) NOT NULL
+    classSize int NOT NULL
 );
