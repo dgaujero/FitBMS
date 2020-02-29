@@ -41,6 +41,10 @@ var admin = {
             cb(res);
         });
     },
-    
+    allTrainers: function(cb) {
+        orm.allTrainers("membersTable", function(res) {
+            cb(res);
+        });
+    }
 };
 module.exports = admin;
