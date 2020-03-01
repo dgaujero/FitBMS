@@ -15,9 +15,8 @@
 }
 
 .card-container {
-display: inline-block !important;
-max-width: 40%;
-margin-right: 10px;
+max-width: 30%;
+margin: 5px 10px 5px 20px;
 }
 
 h1 {

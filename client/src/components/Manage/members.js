@@ -45,42 +45,39 @@ class Members extends Component {
 
 
         {this.state.members.length ? (
-          <List>
+          <Row>
             {this.state.members.map(member => {
               return (
 
-                <ListItem className="li-item"
-                  key={member.id}>
+                <Card key={member.id} className="card-container">
+                  <CardImg top width="80%" src={member.profilePic} alt="Card image cap" />
+                  <CardBody>
+                    <CardTitle><strong>{member.firstName} {member.lastName}</strong></CardTitle>
 
-                  <Card className="card-container">
-                    <CardImg top width="80%" src={member.profilePic} alt="Card image cap" />
-                    <CardBody>
-                      <CardTitle><strong>{member.firstName} {member.lastName}</strong></CardTitle>
+                    <CardText>
+                      Phone Number: {member.phoneNum}
+                      <br></br>
+                      Address: {member.address}
+                      <br></br>
+                      Emergency Contact: {member.emergName}, {member.emergNum}
+                      <br></br>
+                    </CardText>
+                    <Button color="danger" type="submit" onClick={e => this.deleteMember(e, member.id)}>Delete</Button>
+                  </CardBody>
+                </Card>
+                /* <strong>
+                  {member.firstName} {member.lastName} {member.username}
+                  {member.password} {member.phoneNum} {member.bday}
+                  {member.address} {member.email} {member.emergName}
+                  {member.emergNum}
+                </strong>
+                <button type="submit" onClick={e => this.deleteMember(e, member.id)}>Delete</button> */
 
-                      <CardText>
-                        Phone Number: {member.phoneNum}
-                        <br></br>
-                        Address: {member.address}
-                        <br></br>
-                        Emergency Contact: {member.emergName}, {member.emergNum}
-                        <br></br>
-                      </CardText>
-                      <Button color="danger" type="submit" onClick={e => this.deleteMember(e, member.id)}>Delete</Button>
-                    </CardBody>
-                  </Card>
-                  {/* <strong>
-                    {member.firstName} {member.lastName} {member.username}
-                    {member.password} {member.phoneNum} {member.bday}
-                    {member.address} {member.email} {member.emergName}
-                    {member.emergNum}
-                  </strong>
-                  <button type="submit" onClick={e => this.deleteMember(e, member.id)}>Delete</button> */}
 
-                </ListItem>
 
               );
             })}
-          </List>
+          </Row>
         ) : (
             <h3>No Results to Display</h3>
           )}
