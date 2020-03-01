@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import List from "../List";
-import ListItem from "../ListItem";
+// import List from "../List";
+// import ListItem from "../ListItem";
 import './manage.css';
 import {
   Card, CardImg, CardText, CardBody,
