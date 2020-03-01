@@ -4,7 +4,7 @@ import React from "react";
 import fire from "../config/fire";
 //import CheckIn from "./pages/checkIn";
 //import Manage from './pages/manage';
-import MemberPortalForm from '../components/memberPortalForm';
+import MemberPortalForm from "../components/memberLogIn";
 import MemberPage from "../components/memberPage";
 //import SelectPage from "./pages/selectPage";
 

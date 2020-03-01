@@ -1,9 +1,16 @@
 var orm = require("../config/orm");
 var member = {
 
+    createMember: function(cols,vals, cb) {
+        console.log("memberportal")
+        orm.create("membersTable", cols, vals, function(res) {
+            cb(res);
+        });
+    },
+
     viewMember: function(condition, cb) {
         console.log("memberportal")
-        orm.viewMember("membersTable", condition, function(res) {
+        orm.selectOne("membersTable", condition, function(res) {
             cb(res);
         });
     },
@@ -11,7 +18,7 @@ var member = {
     updateMember: function(colVals, condition, cb) {
         console.log("UpdateSTEP2");
         console.log(colVals);
-        orm.updateMember("membersTable", colVals, condition, function(res) {
+        orm.update("membersTable", colVals, condition, function(res) {
             cb(res);
         });
     }

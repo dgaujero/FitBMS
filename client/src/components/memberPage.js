@@ -52,15 +52,17 @@ class MemberPage extends Component{
       .then(res => {
         this.setState({firstName: res.data.member[0].firstName});
         this.setState({lastName: res.data.member[0].lastName});
-        this.setState({bday: moment(res.data.member[0].bday).format("YYYY/MM/DD")});
+        this.setState({bday: moment(res.data.member[0].bday).format("YYYY-MM-DD")});
         this.setState({phoneNum: res.data.member[0].phoneNum});
         this.setState({email: res.data.member[0].email});
         this.setState({address: res.data.member[0].address});
         this.setState({ePhoneNum: res.data.member[0].emergNum});
-          console.log(res);
+          console.log(res.data.member[0]);
         })
       .catch(err => console.log(err));
     }
+
+
 
     handleInputChange = (e) => {
         this.setState({ [e.target.name] : e.target.value});
@@ -87,7 +89,6 @@ class MemberPage extends Component{
       axios.put(`updatemember/`, { profileUpdate })
       .then(res => {
           console.log(res);
-          console.log(res.data);
       })
     }
     
@@ -120,13 +121,23 @@ class MemberPage extends Component{
                                 <Col md={6}>
                                     <FormGroup>
                                         <Label for="firstName">First Name</Label>
-                                        <Input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleInputChange}/>
+                                        <Input 
+                                        type="text" 
+                                        name="firstName" 
+                                        id="firstName" 
+                                        value={this.state.firstName || ''} 
+                                        onChange={this.handleInputChange}/>
                                     </FormGroup>
                                 </Col>
                                 <Col md={6}>
                                     <FormGroup>
                                         <Label for="lastName">Last Name</Label>
-                                        <Input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
+                                        <Input 
+                                        type="text" 
+                                        name="lastName" 
+                                        id="lastName" 
+                                        value={this.state.lastName || ''} 
+                                        onChange={this.handleInputChange} />
                                     </FormGroup>
                                 </Col>
                             </Row>
@@ -134,21 +145,25 @@ class MemberPage extends Component{
                                 <Col md={12}>
                                     <FormGroup>
                                         <Label for="address">Address</Label>
-                                        <Input type="text" name="address" id="address" value={this.state.address} onChange={this.handleInputChange} />
+                                        <Input 
+                                        type="text" 
+                                        name="address" 
+                                        id="address" 
+                                        value={this.state.address || ''} 
+                                        onChange={this.handleInputChange} />
                                     </FormGroup>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col md={6}>
                                     <FormGroup>
-                                        <Label for="bday">Birthday</Label>
-                                        <Input type="text" name="bday" id="bday" value={this.state.bday} onChange={this.handleInputChange} />
-                                    </FormGroup>
-                                </Col>
-                                <Col md={6}>
-                                    <FormGroup>
-                                        <Label for="email">Email</Label>
-                                        <Input type="text" name="email" id="email" value={this.state.email} onChange={this.handleInputChange} />
+                                        <Label for="exampleDate">Birthday</Label>
+                                        <Input
+                                        type="date"
+                                        name="bday"
+                                        id="bday"
+                                        value={this.state.bday || ''} 
+                                        onChange={this.handleInputChange} />
                                     </FormGroup>
                                 </Col>
                             </Row>
@@ -156,13 +171,24 @@ class MemberPage extends Component{
                                 <Col md={6}>
                                     <FormGroup>
                                         <Label for="phone">Phone</Label>
-                                        <Input type="text" name="phone" id="phone" value={this.state.phoneNum} onChange={this.handleInputChange} />
+                                        <Input 
+                                        type="text" 
+                                        name="phoneNum" 
+                                        id="phone" 
+                                        value={this.state.phoneNum || ''} 
+                                        onChange={this.handleInputChange} />
                                     </FormGroup>
                                 </Col>
                                 <Col md={6}>
                                     <FormGroup>
                                         <Label for="ePhone">Emergency Phone</Label>
-                                        <Input type="text" name="ePhone" id="ePhone" value={this.state.ePhoneNum} onChange={this.handleInputChange} />
+                                        <Input 
+                                        type="text" 
+                                        name="ePhoneNum" 
+                                        id="ePhone" 
+                                        value={this.state.ePhoneNum || ''} 
+                                        onChange={this.handleInputChange}
+                                        placeholder="Enter emergency phone number here" />
                                     </FormGroup>
                                 </Col>
                             </Row>

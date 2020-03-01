@@ -37,7 +37,7 @@ var orm = {
     });
   },
 
-  viewMember: function (table, condition, cb) {
+  selectOne: function (table, condition, cb) {
     console.log("ORM");
     var queryString = "SELECT * FROM " + table;
     queryString += " WHERE ";
@@ -80,7 +80,7 @@ var orm = {
   },
 
 
-  updateMember: function (table, objColVals, condition, cb) {
+  update: function (table, objColVals, condition, cb) {
     console.log("UPDATE STEP 3");
     var queryString = "UPDATE " + table;
 

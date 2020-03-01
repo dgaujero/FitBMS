@@ -126,4 +126,17 @@ router.delete("/deleteclass/id/:id", function(req, res) {
       }
   });
 });
+
+router.post("/newmember", function (req, res) {
+    // var classID = req.params.id;
+    console.log(req.body);
+    member.createMember(
+        [ "firstName", "lastName", "address", "bday", "phoneNum", "uId"], 
+        [req.body.firstName, req.body.lastName, req.body.address, req.body.bday, req.body.phoneNum, req.body.uId],
+        function (result) {
+            res.json({ id: result.insertId });
+        }
+    );
+});
+  
 module.exports = router;
