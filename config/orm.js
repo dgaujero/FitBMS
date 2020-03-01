@@ -160,9 +160,21 @@ var orm = {
       cb(result);
     });
   },
-  allTrainers: function(tableInput, cb) { //trainers
+  allTrainers: function (tableInput, cb) { //trainers
     var queryString = "SELECT * FROM " + tableInput + " WHERE isTrainer = '1';";
-    connection.query(queryString, function(err, result) {
+    connection.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+  deleteClasses: function (table, condition, cb) {// delete classes
+    var deleteString = "DELETE FROM " + table;
+    deleteString += " WHERE ";
+    deleteString += condition;
+    console.log(deleteString);
+    connection.query(deleteString, function (err, result) {
       if (err) {
         throw err;
       }

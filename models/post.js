@@ -45,6 +45,12 @@ var admin = {
         orm.allTrainers("membersTable", function(res) {
             cb(res);
         });
+    },
+    deleteClasses: function(condition, cb) {
+        console.log("delete class");
+        orm.deleteClasses("classesTable", condition, function(res){
+            cb(res);
+        });
     }
 };
 module.exports = admin;

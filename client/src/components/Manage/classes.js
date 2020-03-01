@@ -31,6 +31,14 @@ class Classes extends Component {
                 this.setState({ classes: response.data.classes })
             })
     };
+
+    deleteClass = (e, data) => {
+        e.preventDefault();
+        axios.delete(`deleteclass/id/${data}`)
+            .then(res => this.loadClasses())
+            .catch(err => console.log(err));
+    };
+
     renderClasses = () => {
         return this.state.classes.map(classList => (
             <div key={classList.id}>
@@ -132,6 +140,25 @@ class Classes extends Component {
                         );
                     })}
                 </List>
+                <h1>Classes</h1>
+                {this.state.classes.length ? (
+                    <List>
+                        {this.state.classes.map(classToDelete => {
+                            return (
+                                <ListItem
+                                    key={classToDelete.id}>
+                                    <strong>
+                                        {classToDelete.nameOfClass} {classToDelete.classType}
+                                        {classToDelete.assignedTrainer} {classToDelete.classSize}
+                                    </strong>
+                                    <button type="submit" onClick={e => this.deleteClass(e, classToDelete.id)}>Delete</button>
+                                </ListItem>
+                            );
+                        })}
+                    </List>
+                ) : (
+                        <h3>No Results to Display</h3>
+                    )}
             </div>
         )
     }
