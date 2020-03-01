@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.17.1",
-    "mysql": "^2.18.1",
     "axios": "^0.18.0",
-    "if-env": "^1.0.4"
+    "express": "^4.17.1",
+    "if-env": "^1.0.4",
+    "moment": "^2.24.0",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",

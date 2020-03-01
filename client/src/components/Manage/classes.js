@@ -5,6 +5,7 @@ import FormButton from './formButton'
 import List from '../List'
 import ListItem from '../ListItem'
 import ModalTemplate from './modal'
+import './manage.css';
 
 class Classes extends Component {
     constructor(props) {
@@ -90,7 +91,7 @@ class Classes extends Component {
     };
     render() {
         return (
-            <div>
+            <div className="classes-container">
                 <h1>Classes</h1>
                 {this.renderClasses()}
                 <form>
