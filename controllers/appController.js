@@ -115,4 +115,15 @@ router.get("/trainers", function(req, res){
 });
 });
 
+router.delete("/deleteclass/id/:id", function(req, res) {
+  var condition = "id = " + req.params.id;
+  console.log(req.params.id);
+  manage.deleteClasses(condition, function(result) {
+      if (result.affectedRows == 0) {
+          return res.status(404).end();
+      } else {
+          res.status(200).end();
+      }
+  });
+});
 module.exports = router;
