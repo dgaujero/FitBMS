@@ -1,15 +1,33 @@
 .attendance-container {
     margin-left: 32%;
+    padding: 0 10px 0 10px;
 }
 
 .members-container {
     margin-left: 32%;
+    padding: 0 10px 0 10px;
 }
 
 .classes-container {
     margin-left: 32%;
+    padding: 0 10px 0 10px;
 }
 
 .trainers-container {
     margin-left: 32%;
+    padding: 0 10px 0 10px;
+}
+
+.card-container {
+max-width: 30%;
+margin: 5px 10px 5px 20px;
+}
+
+h1 {
+    text-align: center;
+    padding: 15px;
+}
+
+.li-item {
+    display: inline-block !important;
 }

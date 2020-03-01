@@ -3,6 +3,11 @@ import axios from 'axios';
 import List from "../List";
 import ListItem from "../ListItem";
 import './manage.css';
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle, Button, Row
+} from 'reactstrap';
+
 
 class Members extends Component {
 
@@ -36,28 +41,48 @@ class Members extends Component {
   render() {
     return (
       <div className="members-container">
-        <h1>Hello Members</h1>
+        <h1>Members</h1>
+
 
         {this.state.members.length ? (
-          <List>
+          <Row>
             {this.state.members.map(member => {
               return (
-                <ListItem
-                  key={member.id}>
-                  <strong>
-                    {member.firstName} {member.lastName} {member.username}
-                    {member.password} {member.phoneNum} {member.bday}
-                    {member.address} {member.email} {member.emergName}
-                    {member.emergNum}
-                  </strong>
-                  <button type="submit" onClick={e => this.deleteMember(e, member.id)}>Delete</button>
-                </ListItem>
+
+                <Card key={member.id} className="card-container">
+                  <CardImg top width="80%" src={member.profilePic} alt="Card image cap" />
+                  <CardBody>
+                    <CardTitle><strong>{member.firstName} {member.lastName}</strong></CardTitle>
+
+                    <CardText>
+                      Phone Number: {member.phoneNum}
+                      <br></br>
+                      Address: {member.address}
+                      <br></br>
+                      Emergency Contact: {member.emergName}, {member.emergNum}
+                      <br></br>
+                    </CardText>
+                    <Button color="danger" type="submit" onClick={e => this.deleteMember(e, member.id)}>Delete Member</Button>
+                  </CardBody>
+                </Card>
+                /* <strong>
+                  {member.firstName} {member.lastName} {member.username}
+                  {member.password} {member.phoneNum} {member.bday}
+                  {member.address} {member.email} {member.emergName}
+                  {member.emergNum}
+                </strong>
+                <button type="submit" onClick={e => this.deleteMember(e, member.id)}>Delete</button> */
+
+
+
               );
             })}
-          </List>
+          </Row>
         ) : (
             <h3>No Results to Display</h3>
           )}
+
+
       </div>
     )
   }

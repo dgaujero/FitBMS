@@ -5,6 +5,7 @@ import CheckIn from "./pages/checkIn";
 import Manage from './pages/manage';
 import MemberPortal from './pages/memberPortal';
 import MemberPage from "./components/memberPage";
+// import Video from "./components/Video/Video";
 // import SelectPage from "./pages/selectPage";
 
 class App extends React.Component {
