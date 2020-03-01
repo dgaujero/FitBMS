@@ -221,7 +221,7 @@ class Classes extends Component {
 
     deleteClass = (e, data) => {
         e.preventDefault();
-        axios.delete(`deleteclass/id/${data}`)
+        axios.delete(`/deleteclass/id/${data}`)
             .then(res => this.loadClasses())
             .catch(err => console.log(err));
     };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText,Container,Row, Col, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText,Container,Row, Col, Modal, ModalHeader, ModalBody} from 'reactstrap';
 import fire from '../config/fire';
 import axios from "axios";
 
