@@ -19,7 +19,7 @@ const SideNav = (props) => {
                 <NavItem className={style.navitem}>
                     <NavLink className={style.navlink} href="/manage/members">Members</NavLink>
                     <hr></hr>
-                </NavItem >
+                </NavItem>
                 <NavItem className={style.navitem}>
                     <NavLink className={style.navlink} href="/manage/trainers">Trainers</NavLink>
                     <hr></hr>

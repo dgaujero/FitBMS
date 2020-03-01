@@ -5,7 +5,7 @@ import ListItem from "../ListItem";
 import './manage.css';
 import {
   Card, CardImg, CardText, CardBody,
-  CardTitle, Button, Row, Col
+  CardTitle, Button
 } from 'reactstrap';
 
 
