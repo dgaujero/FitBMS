@@ -92,7 +92,7 @@ router.put("/updateclass/id/:id", function (req, res) { //class update
   var condition = "id = " + req.params.id;
   console.log(req.body)
   console.log("controller update");
-  manage.update({
+  manage.updateClasses({
     nameOfClass: req.body.nameOfClass,
     classType: req.body.typeOfClass,
     assignedTrainer: req.body.assignedTrainer,

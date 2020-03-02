@@ -9,6 +9,7 @@ class Attendance extends Component {
             checkedIn: []
         }
     };
+
     componentDidMount() {
         this.loadCheckedInMembers();
     };
@@ -22,9 +23,9 @@ class Attendance extends Component {
     renderCheckedIn = () => {
         return this.state.checkedIn.map(member => (
             <div key={member.id}>
-                {member.name}
-                {member.purpose}
-                {member.timestamp}
+                <h1>{member.name} </h1>
+                <h1>{member.purpose}</h1>
+                <h1>{member.seshTime}</h1>
             </div>
         ))
     }
