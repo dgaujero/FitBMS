@@ -56,7 +56,7 @@ class MemberPage extends Component{
         this.setState({phoneNum: res.data.member[0].phoneNum});
         this.setState({email: res.data.member[0].email});
         this.setState({address: res.data.member[0].address});
-        this.setState({ePhoneNum: res.data.member[0].emergNum});
+        this.setState({ePhoneNum: res.data.member[0].ePhoneNum});
           console.log(res.data.member[0]);
         })
       .catch(err => console.log(err));
@@ -86,7 +86,7 @@ class MemberPage extends Component{
           };
           console.log(profileUpdate);
       
-      axios.put(`updatemember/`, { profileUpdate })
+      axios.put(`/updatemember/`, { profileUpdate })
       .then(res => {
           console.log(res);
       })

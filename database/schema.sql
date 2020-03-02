@@ -18,11 +18,11 @@ CREATE TABLE membersTable
 	id int NOT NULL AUTO_INCREMENT,
     firstName varchar(255) NOT NULL,
     lastName varchar(255) NOT NULL,
-    phoneNum int NOT NULL,
+    phoneNum BIGINT NOT NULL,
     bday date NOT NULL,
     address varchar(255) NOT NULL,
     emergName varchar(255),
-    emergNum int,
+    ePhoneNum BIGINT,
     uId varchar(100) NOT NULL,
     isTrainer boolean default '0',
 	PRIMARY KEY (id)
