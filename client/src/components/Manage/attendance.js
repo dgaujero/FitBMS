@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import './manage.css';
+import fire from '../../config/fire'
 
 class Attendance extends Component {
     constructor(props) {
@@ -29,11 +30,15 @@ class Attendance extends Component {
             </div>
         ))
     }
+    logout = () => {
+        fire.auth().signOut();
+       
+    }
     render() {
         return (
             <div className="attendance-container">
                 Checked In Members: {this.renderCheckedIn()}
-
+                <button type ="submit" href="" onClick={this.logout}>Sign Out</button>
             </div>
         )
     }
