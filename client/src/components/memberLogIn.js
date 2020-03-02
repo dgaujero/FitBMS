@@ -43,6 +43,7 @@ class MemberPortal extends Component{
                 phoneNum : this.state.phoneNum,
                 uId : data.user.uid
             }
+            console.log(this.state.bday);
             axios.post(`/newmember`, newMember)
             .then(res => {
                 console.log(res);
