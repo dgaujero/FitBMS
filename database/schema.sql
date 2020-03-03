@@ -7,7 +7,6 @@ CREATE TABLE checkInTable
     name varchar(255) NOT NULL,
     purpose varchar(255) NOT NULL,
     seshTime timestamp default CURRENT_TIMESTAMP,
-    uId varchar(100) NOT NULL,
     PRIMARY KEY (id)
 );
 CREATE TABLE membersTable

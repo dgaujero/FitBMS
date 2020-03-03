@@ -1,9 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import CheckIn from "./pages/checkIn";
 import MemberPortal from './pages/memberPortal';
-import MemberPage from "./components/memberPage";
-import ModalExample from './components/CheckIn/modal'
 import Home from "./components/Manage/home";
 import Video from "./components/Video/Video";
 import HomeTwo from "./components/CheckIn/hometwo";
@@ -19,8 +16,6 @@ class App extends React.Component {
           <Route path="/hometwo" component={HomeTwo} />
           <Route path="/memberportal" component={MemberPortal} />
           <Route path="/manage" component={Home} />
-          <Route path="/member" component={MemberPage} />
-          <Route path="/modal" component={ModalExample} />
         </Router>
       </div>
     )
