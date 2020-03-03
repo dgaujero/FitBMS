@@ -10,6 +10,8 @@ const connection = require("../config/connection")
 //     res.json({ checkedIn: data });
 // });
 // });
+
+// CHECKIN IN ROUTES
 router.get("/getmembers", function (req, res) {
   manage.allMembers(function (data) {
     res.json({ members: data })
@@ -28,6 +30,7 @@ router.post("/signin", function (req, res) {
   );
 });
 
+// MEMBER PORTAL ROUTES
 router.get("/viewmember/id/:id", function (req, res) {
   console.log(req.params.id);
   var condition = "uId = '" + req.params.id + "'";
@@ -57,13 +60,13 @@ router.put("/updatemember/", function (req, res) {
   });
 });
 
+// MANAGEMENT SIDE
 
 router.get("/manage/attendance", function (req, res) {
   manage.allAttedance(function (data) {
     res.json({ checkedIn: data });
   });
 });
-// MANAGEMENT SIDE
 
 router.delete("/manage/members/id/:id", function (req, res) {
   var condition = "id = " + req.params.id;

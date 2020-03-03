@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Col } from 'reactstrap';
 import fire from "../../config/fire"
-import Manage from "../../pages/manage"
+import CheckIn from "../CheckIn/Form"
 
-class Home extends Component {
+class HomeTwo extends Component {
     constructor(props) {
         super(props);
 
@@ -47,7 +47,7 @@ class Home extends Component {
         if (this.state.adminAuth) {
             return (
                 <div className="App">
-                    <Manage></Manage>
+                <CheckIn></CheckIn>
                 </div>
             )
         }
@@ -81,4 +81,4 @@ class Home extends Component {
     };
 }
 
-export default Home;
+export default HomeTwo;
