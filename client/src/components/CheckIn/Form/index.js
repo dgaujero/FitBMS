@@ -14,7 +14,8 @@ class CheckinForm extends React.Component {
     this.state = {
       members: [],
       name: "",
-      purpose: ""
+      purpose: "",
+      search: ""
     }
 
   };
@@ -32,34 +33,19 @@ class CheckinForm extends React.Component {
         this.setState({ members: response.data.members })
       })
   }
-  renderMember() {
-    return this.state.members.map(member => (
-      <div key={member.id}>
-        {member.firstName + " " + member.lastName}
-      </div>
-    ))
-  }
+  // renderMember() {
+  //   return this.state.members.map(member => (
+  //     <div key={member.id}>
+  //       {member.firstName + " " + member.lastName}
+  //     </div>
+  //   ))
+  // }
 
   logout = () => {
     fire.auth().signOut();
     window.location.href="/checkin"
   }
 
-  // selectMember(e, memberName) {
-  //   this.setState({
-  //     name: memberName
-  //   })
-  // };
-
-  // selectPurpose(e, purpose) {
-  //   this.setState({
-  //     purpose: purpose
-  //   })
-  // };
-
-  /*
-    
-  */
   select = (field) => {
     return (e) => {
       this.setState({
@@ -91,14 +77,25 @@ class CheckinForm extends React.Component {
       })
   }
 
+  updateSearch(event) {
+    this.setState({search: event.target.value.substr(0, 25)})
+  }
+
   render() {
+    let filteredList = this.state.members.filter(
+      (member) => { 
+          return member.firstName.toLowerCase().indexOf(this.state.search) !== -1;
+      }
+    );
+
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
           <div>
+          <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Search..."></input>
             {this.state.members.length ? (
               <List>
-                {this.state.members.map(member => {
+                {filteredList.map(member => {
                   return (
                     <ListItem key={member.id}>
                       <strong>
