@@ -3,6 +3,7 @@ import React from 'react'
 import axios from 'axios';
 import List from "../../List";
 import ListItem from "../../ListItem";
+import fire from '../../../config/fire'
 // import Buttons from '../Buttons'
 // import { Button, ButtonGroup } from 'reactstrap';
 
@@ -39,12 +40,17 @@ class CheckinForm extends React.Component {
     ))
   }
 
+  logout = () => {
+    fire.auth().signOut();
+    window.location.href="/checkin"
+  }
+
   // selectMember(e, memberName) {
   //   this.setState({
   //     name: memberName
   //   })
   // };
-  
+
   // selectPurpose(e, purpose) {
   //   this.setState({
   //     purpose: purpose
@@ -64,10 +70,10 @@ class CheckinForm extends React.Component {
 
   handleInputChange = (event, data) => {
     // e.preventDefault();
-    this.setState({ 
+    this.setState({
       name: event.target.value,
       purpose: event.target.value
-     });
+    });
   };
 
   handleFormSubmit = event => {
@@ -112,6 +118,7 @@ class CheckinForm extends React.Component {
           </div>
           {/* <Buttons></Buttons> */}
           <button type="submit">Check Me In!</button>
+          <button type ="submit" href="" onClick={this.logout}>Sign Out</button>
         </form>
       </div>
     )
