@@ -49,7 +49,8 @@ router.put("/updatemember/", function (req, res) {
     bday: req.body.profileUpdate.bday,
     phoneNum: req.body.profileUpdate.phoneNum,
     address: req.body.profileUpdate.address,
-    ePhoneNum: req.body.profileUpdate.ePhoneNum
+    ePhoneNum: req.body.profileUpdate.ePhoneNum,
+    profilePic: req.body.profileUpdate.profilePic
   }, condition, function (result) {
     if (result.changedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
