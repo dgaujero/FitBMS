@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import './manage.css';
 import fire from '../../config/fire'
+import moment from 'moment'
 
 class Attendance extends Component {
     constructor(props) {
@@ -23,6 +24,7 @@ class Attendance extends Component {
     }
     renderCheckedIn = () => {
         return this.state.checkedIn.map(member => (
+
             <div key={member.id}>
                 <h1>{member.name} </h1>
                 <h1>{member.purpose}</h1>

@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Attendance from "../components/Manage/attendance";
-// import NavTabs from '../components/navTabs'
 import Members from "../components/Manage/members";
 import Classes from "../components/Manage/classes";
 import Trainers from "../components/Manage/trainers";
