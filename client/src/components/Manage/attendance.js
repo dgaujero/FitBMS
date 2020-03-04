@@ -39,7 +39,6 @@ class Attendance extends Component {
                 <h1>Checked In Members</h1>
                 <hr className="title-hr"></hr>
                 {this.renderCheckedIn()}
-                <button type="submit" href="" onClick={this.logout}>Sign Out</button>
             </div>
         )
     }

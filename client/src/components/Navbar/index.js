@@ -12,33 +12,37 @@ class SideNav extends Component {
     }
 
     render() {
-        return(
+        return (
             <div className={style.Container}>
-            <Nav className={style.sidenav} vertical>
-                <img className={style.logoimg}
-                    width="200px"
-                    src={logomanage}
-                    alt="logo" />
-                <NavItem className={style.navitem}>
-                    <NavLink className={style.navlink} href="/manage/attendance">Attendance</NavLink>
-                    <hr></hr>
-                </NavItem>
-                <NavItem className={style.navitem}>
-                    <NavLink className={style.navlink} href="/manage/members">Members</NavLink>
-                    <hr></hr>
-                </NavItem>
-                <NavItem className={style.navitem}>
-                    <NavLink className={style.navlink} href="/manage/trainers">Trainers</NavLink>
-                    <hr></hr>
-                </NavItem>
-                <NavItem className={style.navitem}>
-                    <NavLink className={style.navlink} href="/manage/classes">Scheduler</NavLink>
-                    <hr></hr>
-                </NavItem>
-                <button type ="submit" href="" onClick={this.logout}>Sign Out</button>
-            </Nav>
-            
-        </div>
+                <Nav className={style.sidenav} vertical>
+                    <img className={style.logoimg}
+                        width="200px"
+                        src={logomanage}
+                        alt="logo" />
+                    <NavItem className={style.navitem}>
+                        <NavLink className={style.navlink} href="/manage/attendance">Attendance</NavLink>
+                        <hr></hr>
+                    </NavItem>
+                    <NavItem className={style.navitem}>
+                        <NavLink className={style.navlink} href="/manage/members">Members</NavLink>
+                        <hr></hr>
+                    </NavItem>
+                    <NavItem className={style.navitem}>
+                        <NavLink className={style.navlink} href="/manage/trainers">Trainers</NavLink>
+                        <hr></hr>
+                    </NavItem>
+                    <NavItem className={style.navitem}>
+                        <NavLink className={style.navlink} href="/manage/classes">Scheduler</NavLink>
+                        <hr></hr>
+                    </NavItem>
+                    <NavItem className={style.navitem}>
+                        <NavLink className={style.signout} onClick={this.logout}>Sign Out</NavLink>
+                        <hr></hr>
+                    </NavItem>
+
+                </Nav>
+
+            </div>
         )
     }
 }

@@ -63,7 +63,7 @@ class Members extends Component {
                       Emergency Contact: {member.emergName}, {member.emergNum}
                       <br></br>
                     </CardText>
-                    <Button color="danger" type="submit" onClick={e => this.deleteMember(e, member.id)}>Delete Member</Button>
+                    <Button color="info" type="submit" onClick={e => this.deleteMember(e, member.id)}>Manage Member</Button>
                   </CardBody>
                 </Card>
                 /* <strong>
