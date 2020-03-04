@@ -25,9 +25,15 @@ margin: 5px 10px 5px 20px;
 
 h1 {
     text-align: center;
-    padding: 15px;
+    padding: 20px;
 }
 
 .li-item {
     display: inline-block !important;
 }
+.title-hr {
+    width: 30%;
+    margin: 2px auto 30px !important ;
+}
+
+

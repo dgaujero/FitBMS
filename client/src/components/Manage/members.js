@@ -42,6 +42,7 @@ class Members extends Component {
     return (
       <div className="members-container">
         <h1>Members</h1>
+        <hr className="title-hr"></hr>
 
 
         {this.state.members.length ? (

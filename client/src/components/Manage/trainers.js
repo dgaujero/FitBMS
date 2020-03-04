@@ -34,6 +34,7 @@ class Trainers extends Component {
     return (
       <div className="trainers-container">
         <h1>Trainers</h1>
+        <hr className="title-hr"></hr>
         {this.renderTrainer()}
       </div>
     )
