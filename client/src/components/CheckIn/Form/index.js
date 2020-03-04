@@ -78,6 +78,7 @@ class CheckinForm extends React.Component {
   }
 
   updateSearch(event) {
+    console.log(event.target.value)
     this.setState({search: event.target.value.substr(0, 25)})
   }
 
