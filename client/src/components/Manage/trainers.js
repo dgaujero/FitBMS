@@ -9,7 +9,8 @@ class Trainers extends Component {
       trainers: [],
       // id: "",
       firstName: "",
-      lastName: ""
+      lastName: "",
+      search: ""
     }
   };
   componentDidMount() {
@@ -23,18 +24,33 @@ class Trainers extends Component {
       })
   };
   renderTrainer = () => {
-    return this.state.trainers.map(trainer => (
+    let filteredList = this.state.trainers.filter(
+      (member) => { 
+          return member.firstName.toLowerCase().indexOf(this.state.search) === 0;
+      }
+    );
+    return filteredList.map(trainer => (
       <div key={trainer.id}>
         {trainer.firstName} {trainer.lastName}
       </div>
     ))
   };
 
+  updateSearch(event) {
+    console.log(event.target.value)
+    this.setState({search: event.target.value.substr(0, 25)})
+  }
+
   render() {
+  
     return (
       <div className="trainers-container">
         <h1>Trainers</h1>
+
         <hr className="title-hr"></hr>
+
+        <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Search..."></input>
+
         {this.renderTrainer()}
       </div>
     )
