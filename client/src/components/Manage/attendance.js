@@ -24,11 +24,8 @@ class Attendance extends Component {
     }
     renderCheckedIn = () => {
         return this.state.checkedIn.map(member => (
-
             <div key={member.id}>
-                <h1>{member.name} </h1>
-                <h1>{member.purpose}</h1>
-                <h1>{member.seshTime}</h1>
+                <h3>` Name: {member.name} | Purpose: {member.purpose} | Date: {moment(member.seshTime).format("YYYYY-MM-DDTHH:mm")}`</h3>
             </div>
         ))
     }
