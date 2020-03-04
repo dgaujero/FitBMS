@@ -5,7 +5,7 @@ CREATE TABLE checkInTable
 (
     id int NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
-    purpose varchar(255) NOT NULL,
+    purpose varchar(255) NULL,
     seshTime timestamp default CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
@@ -33,15 +33,5 @@ CREATE TABLE classesTable
     assignedTrainer varchar(255) NOT NULL,
     classSize int NOT NULL
 );
-INSERT INTO membersTable (firstName, lastName, profilePic, phoneNum, bday, address, emergName, uId) 
-VALUES (
-    'Aldo',
-    'Huayhua',
-    'https://i.ibb.co/4mLTzv0/aldo-huayhua.png',
-    '1111111111',
-    '1997-11-02',
-    '161 Newkirk Ave',
-    'mom',
-    'bRYIdls4DndXxQABPAf9SueTMNh1'
-    );
+
 
