@@ -88,7 +88,7 @@ class CheckinForm extends React.Component {
   render() {
     let filteredList = this.state.members.filter(
       (member) => { 
-          return member.firstName.toLowerCase().indexOf(this.state.search) == 0;
+          return member.firstName.toLowerCase().indexOf(this.state.search) === 0;
       }
     );
 

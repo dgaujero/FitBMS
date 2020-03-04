@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import logomanage from './logomanage.png';
 import style from './style.module.css';
+import fire from '../../config/fire'
 
 
-const SideNav = (props) => {
-    return (
-        <div className={style.Container}>
+
+class SideNav extends Component {
+    logout = () => {
+        fire.auth().signOut();
+    }
+
+    render() {
+        return(
+            <div className={style.Container}>
             <Nav className={style.sidenav} vertical>
                 <img className={style.logoimg}
                     width="200px"
@@ -28,9 +35,12 @@ const SideNav = (props) => {
                     <NavLink className={style.navlink} href="/manage/classes">Scheduler</NavLink>
                     <hr></hr>
                 </NavItem>
+                <button type ="submit" href="" onClick={this.logout}>Sign Out</button>
             </Nav>
+            
         </div>
-    );
+        )
+    }
 }
 
 export default SideNav;
