@@ -31,13 +31,14 @@ class Attendance extends Component {
     }
     logout = () => {
         fire.auth().signOut();
-       
+
     }
     render() {
         return (
             <div className="attendance-container">
-                Checked In Members: {this.renderCheckedIn()}
-                <button type ="submit" href="" onClick={this.logout}>Sign Out</button>
+                <h1>Checked In Members</h1>
+                <hr className="title-hr"></hr>
+                {this.renderCheckedIn()}
             </div>
         )
     }

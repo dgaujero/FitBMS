@@ -52,6 +52,9 @@ class Members extends Component {
     return (
       <div className="members-container">
         <h1>Members</h1>
+
+        <hr className="title-hr"></hr>
+
         <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Search..."></input>
         {this.state.members.length ? (
           <Row>
@@ -71,7 +74,7 @@ class Members extends Component {
                       Emergency Contact: {member.emergName}, {member.emergNum}
                       <br></br>
                     </CardText>
-                    <Button color="danger" type="submit" onClick={e => this.deleteMember(e, member.id)}>Delete Member</Button>
+                    <Button color="info" type="submit" onClick={e => this.deleteMember(e, member.id)}>Manage Member</Button>
                   </CardBody>
                 </Card>
                 /* <strong>

@@ -196,9 +196,9 @@ class Classes extends Component {
         this.state = {
             classes: [],
             nameOfClass: "",
-            typeToEdit: "", 
-            trainerToEdit: "", 
-            sizeToEdit: "", 
+            typeToEdit: "",
+            trainerToEdit: "",
+            sizeToEdit: "",
             classToEdit: "",
             classType: "",
             assignedTrainer: "",
@@ -266,13 +266,13 @@ class Classes extends Component {
         console.log(this.state.classToEdit)
         const updateClass = {
             nameOfClass: this.state.classToEdit,
-            typeOfClass: this.state.typeToEdit, 
-            assignedTrainer: this.state.trainerToEdit, 
-            classSize: parseInt(this.state.sizeToEdit) 
+            typeOfClass: this.state.typeToEdit,
+            assignedTrainer: this.state.trainerToEdit,
+            classSize: parseInt(this.state.sizeToEdit)
         }
         axios.put(`/updateclass/id/${data}`, updateClass)
             .then(res => {
-                this.setState({ classToEdit: '', typeToEdit: '', trainerToEdit: '', sizeToEdit: ''  })
+                this.setState({ classToEdit: '', typeToEdit: '', trainerToEdit: '', sizeToEdit: '' })
                 this.loadClasses()
             }
             )
@@ -282,6 +282,8 @@ class Classes extends Component {
         return (
             <div className="classes-container">
                 <h1>Classes</h1>
+                <hr className="title-hr"></hr>
+                <br></br>
                 {/* {this.renderClasses()} */}
                 <form>
                     <Input
@@ -325,20 +327,20 @@ class Classes extends Component {
                                     {classUpdate.assignedTrainer} {classUpdate.classSize}
                                 </strong>
                                 <button type="submit" onClick={e => this.deleteClass(e, classUpdate.id)}>Delete</button>
-                                <ModalTemplate value={this.state.classToEdit} statename="classToEdit" id={classUpdate.id} updateClass={this.updateClass} changeFunction={this.handleInputChangeToo} name={classUpdate.nameOfClass} 
+                                <ModalTemplate value={this.state.classToEdit} statename="classToEdit" id={classUpdate.id} updateClass={this.updateClass} changeFunction={this.handleInputChangeToo} name={classUpdate.nameOfClass}
                                     value1={this.state.typeToEdit} statename1="typeToEdit" id1={classUpdate.id} updateClass1={this.updateClass} changeFunction1={this.handleInputChangeToo}
                                     name1={classUpdate.classType}
                                     value2={this.state.trainerToEdit} statename2="trainerToEdit" id2={classUpdate.id} updateClass2={this.updateClass} changeFunction2={this.handleInputChangeToo}
                                     name2={classUpdate.assignedTrainer}
                                     value3={this.state.sizeToEdit} statename3="sizeToEdit" id3={classUpdate.id} updateClass3={this.updateClass} changeFunction3={this.handleInputChangeToo}
-                                    name3={classUpdate.classSize}/>
+                                    name3={classUpdate.classSize} />
 
                                 {/* <button type="submit" onClick={e => this.updateClass(e, classUpdate.id)}>Update Class</button> */}
                             </ListItem>
                         );
                     })}
                 </List>
-                
+
             </div>
         )
     }
