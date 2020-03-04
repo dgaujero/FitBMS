@@ -12,6 +12,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
+        <Route path="/" component={Video} />
           <Route path="/checkin" component={Video} />
           <Route path="/hometwo" component={HomeTwo} />
           <Route path="/memberportal" component={MemberPortal} />
