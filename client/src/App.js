@@ -12,9 +12,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
+          <Route exact path="/" component={MemberPortal} />
           <Route path="/checkin" component={Video} />
           <Route path="/hometwo" component={HomeTwo} />
-          <Route path="/memberportal" component={MemberPortal} />
           <Route path="/manage" component={Home} />
         </Router>
       </div>

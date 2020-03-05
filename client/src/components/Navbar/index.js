@@ -9,6 +9,7 @@ import fire from '../../config/fire'
 class SideNav extends Component {
     logout = () => {
         fire.auth().signOut();
+        window.location.href="/manage"
     }
 
     render() {

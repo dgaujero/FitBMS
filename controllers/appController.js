@@ -5,12 +5,6 @@ var manage = require("../models/post");
 var member = require("../models/memberPortal")
 const connection = require("../config/connection")
 
-// router.get("/attendance", function(req, res){
-//     manage.all(function(data) {
-//     res.json({ checkedIn: data });
-// });
-// });
-
 // CHECKIN IN ROUTES
 router.get("/getmembers", function (req, res) {
   manage.allMembers(function (data) {

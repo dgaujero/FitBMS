@@ -4,17 +4,20 @@ import React,{Component} from "react";
 // import Toolbar from '@material-ui/core/Toolbar';
 // import IconButton from '@material-ui/core/IconButton';
 // import Typography from '@material-ui/core/Typography';
-import { Alert, Media, Button, Form, FormGroup, Label, Input, Container, Row, Col, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Modal, ModalHeader, ModalBody} from 'reactstrap';
+import {Jumbotron, Alert, Media, Button, Form, FormGroup, Label, Input, Container, Row, Col, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Modal, ModalHeader, ModalBody} from 'reactstrap';
 import fire from "../config/fire";
 import axios from 'axios'; 
 import moment from 'moment';
 import placeholderImage from '../utils/profile-placeholder.jpg';
+import List from '../components/List';
+import ListItem from '../components/ListItem';
 
 
 class MemberPage extends Component{
     constructor(props){
         super(props);
         this.state = {
+           classes: [], 
            uId: '',
            firstName: '',
            lastName: '',
@@ -33,12 +36,17 @@ class MemberPage extends Component{
            emailCollapsed: false,
            passwordCollapsed: false,
            alertVisible: false,
-           successVisible: false
+           successVisible: false,
+           joinVisible: false,
+           profileVisibility: "d-none",
+           classesVisibility: "d-none",
+           landingVisibility: "d-block"
         }
     }
     
     componentDidMount(){
         this.authListener();
+        this.loadClasses();
     }
       
     authListener(){
@@ -94,7 +102,7 @@ class MemberPage extends Component{
         this.setState({alertVisible: true} , ()=>{
             window.setTimeout(()=>{
                 this.setState({alertVisible:false})
-              },2000)
+              },5000)
         });
        
     }
@@ -103,9 +111,28 @@ class MemberPage extends Component{
         this.setState({successVisible: true} , ()=>{
             window.setTimeout(()=>{
                 this.setState({successVisible:false})
-              },2000)
+              },5000)
         });
         
+    }
+
+    toggleClassJoin = () =>{
+        this.setState({joinVisible: true} , ()=>{
+            window.setTimeout(()=>{
+                this.setState({joinVisible:false})
+              },3000)
+        });
+    }
+
+    toggleClassesVisibility = (event) => {
+        event.preventDefault();
+        this.loadClasses();
+        this.setState({profileVisibility: "d-none", classesVisibility: "d-block", landingVisibility:"d-none"});
+    }
+
+    toggleProfileVisibility = (event) => {
+        event.preventDefault(); 
+        this.setState({profileVisibility: "d-block", classesVisibility: "d-none", landingVisibility:"d-none"});
     }
 
     updateEmail = () => {
@@ -120,9 +147,11 @@ class MemberPage extends Component{
                         userCredential.user.updateEmail(email).then(() => {
                             this2.toggleSuccess();
                         }).catch((error) => {
+                            this2.setState({alertMessage: error.message});
                             this2.toggleAlert();
                         });
                     }).catch((error) => {
+                        this2.setState({alertMessage: error.message})
                         this2.toggleAlert();
                     })
             }
@@ -146,9 +175,11 @@ class MemberPage extends Component{
                             this2.toggleSuccess();
                             
                         }).catch((error) => {
+                            this2.setState({alertMessage: error.message})
                             this2.toggleAlert();
                         });
                     }).catch((error) => {
+                        this2.setState({alertMessage: error.message})
                         this2.toggleAlert();
                     })
             }
@@ -161,6 +192,7 @@ class MemberPage extends Component{
 
     updateProfile = (event) => {
         event.preventDefault();
+        const this2 = this;
         const profileUpdate= { 
             firstName : this.state.firstName,
             lastName : this.state.lastName,
@@ -168,47 +200,97 @@ class MemberPage extends Component{
             bday: this.state.bday,
             phoneNum: this.state.phoneNum,
             ePhoneNum: this.state.ePhoneNum,
-            profilePic: this.state.profilePicToChange,
+            profilePic: this.state.profilePic,
             uId: this.state.uId
           };
-          console.log(profileUpdate);
+        if(this.state.profilePicToChange !== "")
+            profileUpdate.profilePic = this.state.profilePicToChange;
+        console.log(profileUpdate);
       
       axios.put(`/updatemember/`, { profileUpdate })
       .then(res => {
           console.log(res);
-          window.location.reload();
+          this2.toggleSuccess();
+        }).catch(err => {
+            console.log(err);
         })
     }
-    
+
+    loadClasses = () => {
+        axios.get('/getclasses')
+            .then((response) => {
+                console.log(response)
+                this.setState({ classes: response.data.classes })
+            })
+    };
+
+    renderClasses = () => {
+        return this.state.classes.map(classList => (
+            <Row>
+                <div key={classList.id}>
+                {classList.nameOfClass} {classList.classType}
+                {classList.assignedTrainer} {classList.classSize}
+            </div>
+            </Row>
+        ))
+    };
+     
     render() {
         
         return(
         <div>
             <div>
-            <Navbar color="faded" light>
-                <NavbarBrand href="/" className="mr-auto">FitBMS</NavbarBrand>
-                <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-                <Collapse isOpen={this.state.collapsed} navbar>
-                <Nav navbar>
-                    <NavItem>
-                        <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="" onClick={this.logout}>Sign Out</NavLink>
-                    </NavItem>
-                </Nav>
-                </Collapse>
-            </Navbar>
+                <Navbar color="faded" light>
+                    <NavbarBrand href="/" className="mr-auto">FitBMS</NavbarBrand>
+                    <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+                    <Collapse isOpen={this.state.collapsed} navbar>
+                    <Nav navbar>
+                        <NavItem>
+                            <NavLink href="" onClick={this.toggleProfileVisibility}>Profile</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="" onClick={this.toggleClassesVisibility}>Classes</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="" onClick={this.logout}>Sign Out</NavLink>
+                        </NavItem>
+                    </Nav>
+                    </Collapse>
+                </Navbar>
             </div>
-            <Alert color="danger" isOpen={this.state.alertVisible} toggle={this.state.toggleAlert}>
-                    Something went wrong with that request.
+            <Alert color="danger" className="fixed-top" isOpen={this.state.alertVisible} toggle={this.state.toggleAlert}>
+                   <div>{this.state.alertMessage}</div>
             </Alert>
-            <Alert color="success" isOpen={this.state.successVisible} toggle={this.state.toggleSuccess}>
+            <Alert color="success" className="fixed-top" isOpen={this.state.successVisible} toggle={this.state.toggleSuccess}>
                     Update was successful.
             </Alert>
-                   
+            <Alert color="success" className="fixed-top" isOpen={this.state.joinVisible} toggle={this.state.toggleClassJoin}>
+                    Successfully joined the class!
+            </Alert>
             
-            <Container className="border mt-5 pb-3">
+            <Container className={`mt-5 pb-3 ${this.state.landingVisibility}`}>
+                <Jumbotron><h1>Welcome to your FitBMS profile!</h1></Jumbotron>
+            </Container>
+
+            <Container className={`border mt-5 pb-3 ${this.state.classesVisibility}`}>
+                <List>
+                    {this.state.classes.map(classUpdate => {
+                        return (
+                            <ListItem
+                                key={classUpdate.id}>
+                                <strong>
+                                    {classUpdate.nameOfClass} {classUpdate.classType}
+                                    {classUpdate.assignedTrainer} {classUpdate.classSize}
+                                </strong>
+                                <Button color="success" className="float-right" onClick={this.toggleClassJoin} >Join class</Button>
+            
+                            </ListItem>
+                        );
+                    })}
+                </List>
+            </Container>
+                   
+            <Container className={`border mt-5 pb-3 ${this.state.profileVisibility}`}>
                 <h1>Profile</h1>
                     
                         <Row className = "mb-3">
