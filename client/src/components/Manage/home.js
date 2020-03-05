@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Container, Col } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Container, Col } from 'reactstrap';
 import fire from "../../config/fire"
 import Manage from "../../pages/manage"
 import logomanage from './logomanage.png';
