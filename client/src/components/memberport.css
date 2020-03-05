@@ -1,0 +1,33 @@
+.sign-in-container3 {
+    width: 50%;
+    margin: auto !important;
+    }
+    
+    
+    .signinbackground3{
+        padding: 3% 10% 15% 5%;
+        background-image: url(blueback.jpeg)
+    }
+    
+    .sign-in-logo3{
+    width:100%;
+    }
+    .signin-form3{
+        margin-left: 17%;
+    }
+    
+    .signin-btn3 {
+        float: left;
+        width: 30%;
+        margin: 40px 0px 10% 50px!important;
+        background-color: black !important;
+        border-color: grey !important;
+    }
+
+    .signin-btn4 {
+        float: right;
+        width: 30%;
+        margin: 40px 30px 10% !important;
+        background-color: black !important;
+        border-color: grey !important;
+    }
