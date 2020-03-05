@@ -42,7 +42,6 @@ class MemberPortal extends React.Component {
     return(
     <div className="App">
         <MemberPortalForm/>
-    <Link to="/checkin" ></Link>
     </div>
     )
   };}
