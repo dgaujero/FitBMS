@@ -302,7 +302,7 @@ class MemberPage extends Component {
                                             <br></br>
                                             <strong>Class Size</strong>: {classUpdate.classSize}
                                         </CardText>
-                                        <Button color="success" className="update-class-btn2" onClick={this.toggleClassJoin}>Join class</Button>
+                                        <Button color="info" className="update-class-btn2" onClick={this.toggleClassJoin}>Join class</Button>
 
                                     </CardBody>
                                 </Card>
