@@ -50,7 +50,7 @@ class Members extends Component {
             {this.state.members.map(member => {
               return (
 
-                <Card key={member.id} className="card-container">
+                <Card key={member.id} className="card-container shadow">
                   <CardImg top width="80%" src={member.profilePic} alt="Card image cap" />
                   <CardBody>
                     <CardTitle><strong>{member.firstName} {member.lastName}</strong></CardTitle>
