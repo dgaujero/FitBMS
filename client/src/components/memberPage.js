@@ -4,7 +4,10 @@ import React, { Component } from "react";
 // import Toolbar from '@material-ui/core/Toolbar';
 // import IconButton from '@material-ui/core/IconButton';
 // import Typography from '@material-ui/core/Typography';
-import { Jumbotron, Alert, Media, Button, Form, FormGroup, Label, Input, Container, Row, Col, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, Jumbotron, Alert, Media, Button, Form, FormGroup, Label, Input, Container, Row, Col, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Modal, ModalHeader, ModalBody
+} from 'reactstrap';
 import fire from "../config/fire";
 import axios from 'axios';
 import moment from 'moment';
@@ -283,21 +286,25 @@ class MemberPage extends Component {
                 <Container className={`mem-classes-container border mt-5 pb-3 ${this.state.classesVisibility}`}>
                     <h1>CLASSES</h1>
                     <hr className="title-hr2"></hr>
-                    <List>
+                    <Row>
                         {this.state.classes.map(classUpdate => {
                             return (
-                                <ListItem
+                                <Card className="shadow class-card2"
                                     key={classUpdate.id}>
-                                    <strong>
-                                        {classUpdate.nameOfClass} {classUpdate.classType}
-                                        {classUpdate.assignedTrainer} {classUpdate.classSize}
-                                    </strong>
-                                    <Button color="success" className="float-right" onClick={this.toggleClassJoin} >Join class</Button>
+                                    <CardBody>
+                                        <CardTitle className="gym-class-title2"><strong>{classUpdate.classType}</strong></CardTitle>
+                                        <CardText className="gym-class-text2">
+                                            <strong>Instructor</strong>: {classUpdate.assignedTrainer}
+                                            <br></br>
+                                            <strong>Class Size</strong>: {classUpdate.classSize}
+                                        </CardText>
+                                        <Button color="success" className="update-class-btn2" onClick={this.toggleClassJoin} >Join class</Button>
 
-                                </ListItem>
+                                    </CardBody>
+                                </Card>
                             );
                         })}
-                    </List>
+                    </Row>
                 </Container>
 
                 <Container className={`border profile-container mt-5 pb-3 ${this.state.profileVisibility}`}>

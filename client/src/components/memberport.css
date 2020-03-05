@@ -51,7 +51,7 @@
     .mem-classes-container{
         width: 62% !important;
         margin-left: 35% !important;
-       padding: 0 10px 0 40px;
+       padding: 0 10px 0 100px;
     }
 
     .prof-img {
@@ -63,4 +63,19 @@
 .title-hr2{
     width: 30%;
     margin: 2px auto 30px !important ;
+}
+
+.gym-class-title2 {
+    text-align: center;
+    font-family:'Maven Pro';
+    font-size: 30px;
+}
+.gym-class-text2 {
+    line-height: 200%;
+}
+
+.class-card2 {
+    width: 40%;
+    margin-right: 5%;
+    margin-top: 5%;
 }
