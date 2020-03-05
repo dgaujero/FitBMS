@@ -78,4 +78,13 @@
     width: 40%;
     margin-right: 5%;
     margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.update-class-btn2{
+    margin-left:35%;
+}
+
+.class-row{
+    margin-left: 12% !important;
 }
