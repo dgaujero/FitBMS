@@ -288,19 +288,21 @@ class MemberPage extends Component {
                 <Container className={`mem-classes-container border mt-5 pb-3 ${this.state.classesVisibility}`}>
                     <h1>CLASSES</h1>
                     <hr className="title-hr2"></hr>
-                    <Row>
+                    <Row className="class-row">
                         {this.state.classes.map(classUpdate => {
                             return (
                                 <Card className="shadow class-card2"
                                     key={classUpdate.id}>
                                     <CardBody>
-                                        <CardTitle className="gym-class-title2"><strong>{classUpdate.classType}</strong></CardTitle>
+                                        <CardTitle className="gym-class-title2"><strong>{classUpdate.nameOfClass}</strong></CardTitle>
                                         <CardText className="gym-class-text2">
+                                            <strong>Class Type</strong>: {classUpdate.classType}
+                                            <br></br>
                                             <strong>Instructor</strong>: {classUpdate.assignedTrainer}
                                             <br></br>
                                             <strong>Class Size</strong>: {classUpdate.classSize}
                                         </CardText>
-                                        <Button color="success" className="update-class-btn2" onClick={this.toggleClassJoin} >Join class</Button>
+                                        <Button color="success" className="update-class-btn2" onClick={this.toggleClassJoin}>Join class</Button>
 
                                     </CardBody>
                                 </Card>
