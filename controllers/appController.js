@@ -5,11 +5,14 @@ var manage = require("../models/post");
 var member = require("../models/memberPortal")
 const connection = require("../config/connection")
 
-// router.get("/attendance", function(req, res){
-//     manage.all(function(data) {
-//     res.json({ checkedIn: data });
-// });
-// });
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, '../client/src/index'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
 
 // CHECKIN IN ROUTES
 router.get("/getmembers", function (req, res) {
