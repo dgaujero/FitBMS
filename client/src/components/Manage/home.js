@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Col } from 'reactstrap';
 import fire from "../../config/fire"
 import Manage from "../../pages/manage"
+import logomanage from './logomanage.png';
 
 class Home extends Component {
     constructor(props) {
@@ -52,28 +53,32 @@ class Home extends Component {
             )
         }
         return (
-            <div className="App">
-                <Container className="border mt-5 pb-3">
-                    <h1>SIGN IN</h1>
-                    <Col>
-                        <Form className="text-white">
-                            <FormGroup>
-                                <Label for="userEmail">Username</Label>
-                                <Input type="email" value={this.state.email} onChange={this.handleInputChange} name="email" id="userEmail" placeholder="Enter your email here" />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="userPassword">Password</Label>
-                                <Input type="password" value={this.state.password} onChange={this.handleInputChange} name="password" id="userPassword" placeholder="Password here" />
-                            </FormGroup>
+            <div className="App signinbackground">
+                <div className="sign-in-container">
 
-                            <Button color="primary" onClick={this.login}>Login</Button>
+                    <Container className="mt-5 pb-3">
+                        <img className="sign-in-logo"
+                            src={logomanage}
+                            alt="logo" />
+                        <Col>
+                            <Form className="text-white signin-form">
+                                <FormGroup>
+                                    <Label className="sign-in-text" for="userEmail">Username</Label>
+                                    <Input type="email" value={this.state.email} onChange={this.handleInputChange} name="email" id="userEmail" placeholder="Enter your email here" />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label className="sign-in-text" for="userPassword">Password</Label>
+                                    <Input type="password" value={this.state.password} onChange={this.handleInputChange} name="password" id="userPassword" placeholder="Password here" />
+                                </FormGroup>
 
-                        </Form>
-                    </Col>
+                                <Button className="signin-btn" color="primary" onClick={this.login}>Login</Button>
+
+                            </Form>
+                        </Col>
 
 
-                </Container>
-
+                    </Container>
+                </div>
 
             </div>
         )

@@ -6,6 +6,12 @@ import ListItem from "../../ListItem";
 import fire from '../../../config/fire'
 // import Buttons from '../Buttons'
 // import { Button, ButtonGroup } from 'reactstrap';
+import './index.css';
+import maginifying from './maginifying.png'
+import fitbmslogo from './fitbmslogo.png';
+import classes from './Video.module.css';
+import './Video.css'
+
 
 
 class CheckinForm extends React.Component {
@@ -43,7 +49,7 @@ class CheckinForm extends React.Component {
 
   logout = () => {
     fire.auth().signOut();
-    window.location.href="/checkin"
+    window.location.href = "/checkin"
   }
 
   select = (field) => {
@@ -79,7 +85,7 @@ class CheckinForm extends React.Component {
 
   updateSearch(event) {
     console.log(event.target.value)
-    this.setState({search: event.target.value.substr(0, 25)})
+    this.setState({ search: event.target.value.substr(0, 25) })
   }
 
   checkedIn() {
@@ -88,40 +94,61 @@ class CheckinForm extends React.Component {
 
   render() {
     let filteredList = this.state.members.filter(
-      (member) => { 
-          return member.firstName.toLowerCase().indexOf(this.state.search) === 0;
+      (member) => {
+        return member.firstName.toLowerCase().indexOf(this.state.search) === 0;
       }
     );
+    const videoSource = "http://myholyname.org/Claudia-testarea/nicoles/images/fitbms.mp4"
 
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <div>
-          <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Search..."></input>
-            {this.state.members.length ? (
-              <List>
-                {filteredList.map(member => {
-                  return (
-                    <ListItem key={member.id}>
-                      <strong>
-                        {member.firstName} {member.lastName}
-                      </strong>
-                      <button type="button" onClick={this.select("name")} value={member.firstName + " " + member.lastName}>Thats me!</button>
-                      <button type="button" onClick={this.select("purpose")} value="Trainer">Trainer</button>
-                      <button type="button" onClick={this.select("purpose")} value="Class">Class</button>
-                    </ListItem>
-                  );
-                })}
-              </List>
-            ) : (
-                <h3>No Results to Display</h3>
-              )}
+        <div className={classes.Container} >
+          <video autoPlay="autoplay" loop="loop" muted className={classes.Video} >
+            <source src={videoSource} type="video/mp4" />
+            Your browser does not support the video tag.
+            </video>
 
+          <div className={classes.Content}>
+            <div className={classes.SubContent} >
+              <img className="fitlogo"
+                src={fitbmslogo}
+                alt="profile" />
+              <form onSubmit={this.handleFormSubmit}>
+                <div>
+                  <div className="searchBar">
+                    <input type="text" className="search" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Search Your Name..."></input>
+                  </div>
+                  <div className="name-container">
+                    {this.state.members.length ? (
+
+                      <List classname="list-names">
+                        {filteredList.map(member => {
+                          return (
+                            <ListItem key={member.id}>
+                              <strong>
+                                {member.firstName} {member.lastName}
+                              </strong>
+                              <button type="button" onClick={this.select("name")} value={member.firstName + " " + member.lastName}>Thats me!</button>
+                              <button type="button" onClick={this.select("purpose")} value="Trainer">Trainer</button>
+                              <button type="button" onClick={this.select("purpose")} value="Class">Class</button>
+                            </ListItem>
+                          );
+                        })}
+                      </List>
+                    ) : (
+                        <h3>No Results to Display</h3>
+                      )}
+                  </div>
+                </div>
+                {/* <Buttons></Buttons> */}
+                <button className="check-me-in-btn" type="submit">Check Me In!</button>
+                <button className="signout-btn" type="submit" href="" onClick={this.logout}>Sign Out</button>
+              </form>
+
+            </div>
           </div>
-          {/* <Buttons></Buttons> */}
-          <button type="submit">Check Me In!</button>
-          <button type ="submit" href="" onClick={this.logout}>Sign Out</button>
-        </form>
+        </div>
+
       </div>
     )
   }
