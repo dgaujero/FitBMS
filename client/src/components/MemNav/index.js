@@ -12,20 +12,16 @@ const SideNav = (props) => {
                     width="200px"
                     src={memlogo}
                     alt="logo" />
-                <NavItem className={style.navitem}>
-                    <NavLink className={style.navlink} href="/manage/attendance">Attendance</NavLink>
+                <NavItem>
+                    <NavLink className={style.navlink} onClick={this.toggleProfileVisibility}>Profile</NavLink>
                     <hr></hr>
                 </NavItem>
                 <NavItem className={style.navitem}>
-                    <NavLink className={style.navlink} href="/manage/members">Members</NavLink>
+                    <NavLink onClick={this.toggleClassesVisibility}>Classes</NavLink>
                     <hr></hr>
                 </NavItem>
                 <NavItem className={style.navitem}>
-                    <NavLink className={style.navlink} href="/manage/trainers">Trainers</NavLink>
-                    <hr></hr>
-                </NavItem>
-                <NavItem className={style.navitem}>
-                    <NavLink className={style.navlink} href="/manage/classes">Scheduler</NavLink>
+                    <NavLink href="" onClick={this.logout}>Sign Out</NavLink>
                     <hr></hr>
                 </NavItem>
             </Nav>
