@@ -8,8 +8,9 @@
     left: 0;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
-    background: rgb(0,0,0);
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(109,110,116,1) 55%, rgba(0,0,0,1) 100%);
+    background: rgb(1,17,55);
+background: linear-gradient(0deg, rgba(1,17,55,1) 0%, rgba(40,76,139,1) 47%, rgba(4,37,64,1) 100%);
+    
   }
   
   .navitem {
