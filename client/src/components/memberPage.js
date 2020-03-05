@@ -210,6 +210,7 @@ class MemberPage extends Component{
       axios.put(`/updatemember/`, { profileUpdate })
       .then(res => {
           console.log(res);
+          this2.setState({profilePic: this2.state.profilePicToChange});
           this2.toggleSuccess();
         }).catch(err => {
             console.log(err);
