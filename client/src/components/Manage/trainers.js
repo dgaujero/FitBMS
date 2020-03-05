@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import './manage.css';
+import maginifying from './maginifying.png'
+import {
+  Card, CardImg, CardText, CardBody, CardLink,
+  CardTitle, CardSubtitle, Button
+} from 'reactstrap';
 
 class Trainers extends Component {
   constructor(props) {
@@ -10,7 +15,9 @@ class Trainers extends Component {
       // id: "",
       firstName: "",
       lastName: "",
-      search: ""
+      phoneNum: "",
+      search: "",
+      profilePic: ""
     }
   };
   componentDidMount() {
@@ -25,31 +32,53 @@ class Trainers extends Component {
   };
   renderTrainer = () => {
     let filteredList = this.state.trainers.filter(
-      (member) => { 
-          return member.firstName.toLowerCase().indexOf(this.state.search) === 0;
+      (member) => {
+        return member.firstName.toLowerCase().indexOf(this.state.search) === 0;
       }
     );
     return filteredList.map(trainer => (
       <div key={trainer.id}>
-        {trainer.firstName} {trainer.lastName}
+        <Card className="trainer-card">
+          <CardBody>
+            <img className="trainerPic" width="40%" src={trainer.profilePic} alt="Card image cap" />
+            <CardText className="trainer-name"><strong>{trainer.firstName} {trainer.lastName}</strong>
+              <br></br>
+            </CardText>
+            <CardText className="trainer-text">
+              Phone: {trainer.phoneNum}
+            </CardText>
+            <br></br>
+            <br></br>
+            <br></br>
+            <Button className="trainer-button" color="info" type="submit"><a className="button-text" href="/manage/classes">Assign to a Class</a></Button>
+            <Button className="trainer-button" color="warning" type="submit"><a className="button-text" href="/manage/classes">See Classes</a></Button>
+          </CardBody>
+        </Card>
       </div>
     ))
   };
 
+
   updateSearch(event) {
     console.log(event.target.value)
-    this.setState({search: event.target.value.substr(0, 25)})
+    this.setState({ search: event.target.value.substr(0, 25) })
   }
 
   render() {
-  
+
     return (
       <div className="trainers-container">
-        <h1>Trainers</h1>
+        <h1>TRAINERS</h1>
 
         <hr className="title-hr"></hr>
 
-        <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Search..."></input>
+        <div className="searchBar">
+          <img className="search-icon"
+            width="30px"
+            src={maginifying}
+            alt="search" />
+          <input className="search" type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Search Trainers..."></input>
+        </div>
 
         {this.renderTrainer()}
       </div>
