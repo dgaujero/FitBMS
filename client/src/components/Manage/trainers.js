@@ -3,8 +3,7 @@ import axios from 'axios';
 import './manage.css';
 import maginifying from './maginifying.png'
 import {
-  Card, CardImg, CardText, CardBody, CardLink,
-  CardTitle, CardSubtitle, Button
+  Card, CardText, CardBody, Button
 } from 'reactstrap';
 
 class Trainers extends Component {
