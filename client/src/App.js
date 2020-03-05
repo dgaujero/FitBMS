@@ -13,9 +13,9 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Route exact path="/" component={MemberPortal} />
-          <Route path="/checkin" component={Video} />
-          <Route path="/hometwo" component={HomeTwo} />
-          <Route path="/manage" component={Home} />
+          <Route exact path="/checkin" component={Video} />
+          <Route exact path="/hometwo" component={HomeTwo} />
+          <Route exact path="/manage" component={Home} />
         </Router>
       </div>
     )
