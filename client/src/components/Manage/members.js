@@ -15,7 +15,8 @@ class Members extends Component {
     super(props);
     this.state = {
       members: [],
-      id: ""
+      id: "",
+      search: ""
     }
 
   };
@@ -38,15 +39,26 @@ class Members extends Component {
       .catch(err => console.log(err));
   };
 
+  updateSearch(event) {
+    this.setState({search: event.target.value.substr(0, 5)})
+  }
+
   render() {
+    let filteredList = this.state.members.filter(
+      (member) => { 
+          return member.firstName.toLowerCase().indexOf(this.state.search) === 0;
+      }
+    );
     return (
       <div className="members-container">
         <h1>Members</h1>
 
+        <hr className="title-hr"></hr>
 
+        <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Search..."></input>
         {this.state.members.length ? (
           <Row>
-            {this.state.members.map(member => {
+            {filteredList.map(member => {
               return (
 
                 <Card key={member.id} className="card-container">
@@ -62,7 +74,7 @@ class Members extends Component {
                       Emergency Contact: {member.emergName}, {member.emergNum}
                       <br></br>
                     </CardText>
-                    <Button color="danger" type="submit" onClick={e => this.deleteMember(e, member.id)}>Delete Member</Button>
+                    <Button color="info" type="submit" onClick={e => this.deleteMember(e, member.id)}>Manage Member</Button>
                   </CardBody>
                 </Card>
                 /* <strong>

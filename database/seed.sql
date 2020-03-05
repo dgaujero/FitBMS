@@ -1,3 +1,15 @@
+INSERT INTO membersTable (firstName, lastName, profilePic, phoneNum, bday, address, emergName, uId) 
+VALUES (
+    'Aldo',
+    'Huayhua',
+    'https://i.ibb.co/4mLTzv0/aldo-huayhua.png',
+    '1111111111',
+    '1997-11-02',
+    '161 Newkirk Ave',
+    'mom',
+    'bRYIdls4DndXxQABPAf9SueTMNh1'
+    );
+
 INSERT INTO membersTable (firstName, lastName, username, password, phoneNum, bday, address, email, emergName, emergNum,uId, isTrainer) 
 VALUES (
     'Deion',

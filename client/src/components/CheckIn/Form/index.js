@@ -78,13 +78,18 @@ class CheckinForm extends React.Component {
   }
 
   updateSearch(event) {
+    console.log(event.target.value)
     this.setState({search: event.target.value.substr(0, 25)})
+  }
+
+  checkedIn() {
+    alert("You've been checked in!")
   }
 
   render() {
     let filteredList = this.state.members.filter(
       (member) => { 
-          return member.firstName.toLowerCase().indexOf(this.state.search) !== -1;
+          return member.firstName.toLowerCase().indexOf(this.state.search) === 0;
       }
     );
 
