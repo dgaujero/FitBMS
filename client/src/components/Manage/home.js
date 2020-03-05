@@ -31,17 +31,17 @@ class Home extends Component {
     }
 
 
-    login = (e) =>{
-            e.preventDefault();
-            fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then((u) => {}).catch((error) => {
+    login = (e) => {
+        e.preventDefault();
+        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then((u) => { }).catch((error) => {
                 console.log(error);
             })
-        }
+    }
 
     handleInputChange = (e) => {
-    this.setState({ [e.target.name] : e.target.value});
-}
+        this.setState({ [e.target.name]: e.target.value });
+    }
 
     render() {
         if (this.state.adminAuth) {
@@ -54,13 +54,12 @@ class Home extends Component {
         return (
             <div className="App">
                 <Container className="border mt-5 pb-3">
-                    <h1>Sign In</h1>
+                    <h1>SIGN IN</h1>
                     <Col>
                         <Form className="text-white">
                             <FormGroup>
                                 <Label for="userEmail">Username</Label>
                                 <Input type="email" value={this.state.email} onChange={this.handleInputChange} name="email" id="userEmail" placeholder="Enter your email here" />
-                                <FormText>99% sure that your email is your username</FormText>
                             </FormGroup>
                             <FormGroup>
                                 <Label for="userPassword">Password</Label>
@@ -68,14 +67,14 @@ class Home extends Component {
                             </FormGroup>
 
                             <Button color="primary" onClick={this.login}>Login</Button>
-                            
+
                         </Form>
                     </Col>
 
 
                 </Container>
 
-              
+
             </div>
         )
     };

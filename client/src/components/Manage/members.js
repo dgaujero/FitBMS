@@ -7,7 +7,7 @@ import {
   Card, CardImg, CardText, CardBody,
   CardTitle, Button, Row
 } from 'reactstrap';
-
+import maginifying from './maginifying.png'
 
 class Members extends Component {
 
@@ -40,28 +40,35 @@ class Members extends Component {
   };
 
   updateSearch(event) {
-    this.setState({search: event.target.value.substr(0, 5)})
+    this.setState({ search: event.target.value.substr(0, 5) })
   }
 
   render() {
     let filteredList = this.state.members.filter(
-      (member) => { 
-          return member.firstName.toLowerCase().indexOf(this.state.search) === 0;
+      (member) => {
+        return member.firstName.toLowerCase().indexOf(this.state.search) === 0;
       }
     );
     return (
       <div className="members-container">
-        <h1>Members</h1>
+        <h1>MEMBERS</h1>
 
         <hr className="title-hr"></hr>
 
-        <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Search..."></input>
+        <div className="searchBar">
+          <img className="search-icon"
+            width="30px"
+            src={maginifying}
+            alt="search" />
+          <input className="search" type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="   Search Members..."></input>
+        </div>
+
         {this.state.members.length ? (
           <Row>
             {filteredList.map(member => {
               return (
 
-                <Card key={member.id} className="card-container">
+                <Card key={member.id} className="card-container shadow">
                   <CardImg top width="80%" src={member.profilePic} alt="Card image cap" />
                   <CardBody>
                     <CardTitle><strong>{member.firstName} {member.lastName}</strong></CardTitle>
