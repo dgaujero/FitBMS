@@ -5,7 +5,8 @@ var manage = require("../models/post");
 var member = require("../models/memberPortal")
 const connection = require("../config/connection")
 
-// CHECKIN IN ROUTES
+
+// CHECKIN IN ROUTESnpm star
 router.get("/getmembers", function (req, res) {
   manage.allMembers(function (data) {
     res.json({ members: data })
@@ -142,6 +143,10 @@ router.post("/newmember", function (req, res) {
             res.json({ id: result.insertId });
         }
     );
+});
+
+router.use(function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
   
 module.exports = router;

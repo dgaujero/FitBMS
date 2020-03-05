@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import axios from 'axios';
 import Input from './input'
 import FormButton from './formButton'
-import List from '../List'
-import ListItem from '../ListItem'
 import ModalTemplate from './modal'
 import gymclass from './gymclass.jpg'
 import './manage.css';
 import {
-    Card, CardImg, CardText, CardBody,
+    Card, CardText, CardBody,
     CardTitle, Button, Row
 } from 'reactstrap';
 

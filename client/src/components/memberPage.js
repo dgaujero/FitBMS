@@ -212,14 +212,16 @@ class MemberPage extends Component {
         if (this.state.profilePicToChange !== "")
             profileUpdate.profilePic = this.state.profilePicToChange;
         console.log(profileUpdate);
+      
+      axios.put(`/updatemember/`, { profileUpdate })
+      .then(res => {
+          console.log(res);
+          this2.setState({profilePic: this2.state.profilePicToChange});
+          this2.toggleSuccess();
+        }).catch(err => {
+            console.log(err);
+        })
 
-        axios.put(`/updatemember/`, { profileUpdate })
-            .then(res => {
-                console.log(res);
-                this2.toggleSuccess();
-            }).catch(err => {
-                console.log(err);
-            })
     }
 
     loadClasses = () => {
