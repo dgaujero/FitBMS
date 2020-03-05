@@ -142,6 +142,7 @@ class CheckinForm extends React.Component {
                 </div>
                 {/* <Buttons></Buttons> */}
                 <button className="check-me-in-btn" type="submit">Check Me In!</button>
+                <br></br>
                 <button className="signout-btn" type="submit" href="" onClick={this.logout}>Sign Out</button>
               </form>
 
