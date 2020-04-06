@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import flogo from './flogo.png';
 import classes from './Video.module.css';
-import {Link} from 'react-router-dom';
+import './Video.css'
+import { Link } from 'react-router-dom';
 // import Home from '../Manage/home';
 // import ModalExample from '../CheckIn/modal';
 // import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-    
+
 
 class Video extends Component {
 
@@ -29,14 +30,14 @@ class Video extends Component {
                             <img
                                 src={flogo}
                                 alt="profile" />
-                            <button type="button" className="btn btn-outline-dark" onClick={this.openForm} >
-                            <Link to={'/hometwo'}>Sign In</Link>
+                            <button type="button" classname={classes.button} onClick={this.openForm} >
+                                <Link className="button-text" to={'/hometwo'}>Sign In</Link>
 
                             </button>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         )
     }

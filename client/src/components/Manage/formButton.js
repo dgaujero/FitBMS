@@ -1,7 +1,10 @@
 import React from "react";
+import './manage.css';
+
+
 function FormButton(props) {
   return (
-    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+    <button {...props} className="btn btn-info classbtn">
       {props.children}
     </button>
   );

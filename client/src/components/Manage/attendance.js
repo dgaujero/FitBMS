@@ -3,6 +3,7 @@ import axios from 'axios';
 import './manage.css';
 import fire from '../../config/fire'
 import moment from 'moment'
+import { Card, CardTitle, CardText, Row } from 'reactstrap';
 
 class Attendance extends Component {
     constructor(props) {
@@ -24,8 +25,17 @@ class Attendance extends Component {
     }
     renderCheckedIn = () => {
         return this.state.checkedIn.map(member => (
-            <div key={member.id}>
-                <h3>` Name: {member.name} | Purpose: {member.purpose} | Date: {moment(member.seshTime).format("YYYYY-MM-DDTHH:mm")}`</h3>
+            <div className="check-in-card" key={member.id}>
+                <Card body outline color="info">
+                    <CardTitle className="check-title">
+                        <h3>{member.name}</h3>
+                    </CardTitle>
+                    <CardText className="check-text">
+                        Purpose: {member.purpose}
+                        <br></br>
+                        {moment(member.seshTime).format("LLL")}
+                    </CardText>
+                </Card>
             </div>
         ))
     }
@@ -36,9 +46,11 @@ class Attendance extends Component {
     render() {
         return (
             <div className="attendance-container">
-                <h1>Checked In Members</h1>
+                <h1>CHECKED IN MEMBERS</h1>
                 <hr className="title-hr"></hr>
-                {this.renderCheckedIn()}
+                <Row className="check-row">
+                    {this.renderCheckedIn()}
+                </Row>
             </div>
         )
     }
