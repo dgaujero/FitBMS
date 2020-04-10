@@ -154,8 +154,9 @@ class Classes extends Component {
                                 <Card className="shadow class-card"
                                     key={classUpdate.id}>
                                     <CardBody >
-                                        <CardTitle className="gym-class-title"><strong>{classUpdate.classType}</strong></CardTitle>
+                                        <CardTitle className="gym-class-title"><strong>{classUpdate.nameOfClass}</strong></CardTitle>
                                         <CardText className="gym-class-text">
+                                            <strong>Class Type</strong>: {classUpdate.classType}<br></br>
                                             <strong>Instructor</strong>: {classUpdate.assignedTrainer}
                                             <br></br>
                                             <strong>Class Size</strong>: {classUpdate.classSize}
